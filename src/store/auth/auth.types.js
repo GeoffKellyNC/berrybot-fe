@@ -1,0 +1,14 @@
+export const LOG_IN = 'LOG_IN'
+
+export const SET_AUTH_STATE = 'SET_AUTH_DATA'
+
+
+export const SET_SERVER_STATUS = 'SET_SERVER_STATUS'
+
+export const SET_TWITCH_VERIFIED = 'SET_TWITCH_VERIFIED'
+
+export const SET_LOADING = 'SET_LOADING'
+
+export const FINISHED_LOADING = 'FINISHED_LOADING'
+
+export const SET_BERRY_MOD = 'SET_BERRY_MOD'
