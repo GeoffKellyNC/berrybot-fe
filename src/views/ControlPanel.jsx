@@ -9,12 +9,6 @@ const ControlPanel = ({
     return(
         <div>
             <h1> Welcome {userData.twitch_display} </h1>
-            <span>
-                Is Auth:
-                {
-                    isAuthenticated ? 'True' : 'False'
-                }
-            </span>
         </div>
     )
 }

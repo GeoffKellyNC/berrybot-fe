@@ -1,7 +1,12 @@
 import React from 'react'
 import twitchLoginLink from '../util/twitchLoginLink';
 
-// ANT D COMPONENT IMPORTS
+// Components Imports
+import HomeNav from '../components/Home/HomeNav'
+import HomeMovileNave from '../components/Home/HomeMobileNav'
+
+
+// ANTD COMPONENT IMPORTS
 import { Button } from 'antd';
 
 
