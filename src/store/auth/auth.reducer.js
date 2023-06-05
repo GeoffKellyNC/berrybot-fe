@@ -6,6 +6,6 @@ export function isAuthenticated(state = false, action){
         case authTypes.SET_AUTH_STATE:
             return action.payload
         default:
-            return state
+            return sessionStorage.getItem('isAuth') ? JSON.parse(sessionStorage.getItem('isAuth')) : state
     }
 }
