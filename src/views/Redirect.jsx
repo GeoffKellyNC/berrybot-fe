@@ -9,12 +9,13 @@ const Redirect = ({ loginUser }) => {
 
   const handleRedirect = useCallback(async () => {
     const code = searchParams.get('code')
+    
     const isPaid = await loginUser(code)
-    if (!isPaid){
-      console.log('not paid REDIRECTING') //!DEBUG
-      return navigate('/pricing')
-    } 
+
+    if (!isPaid) return navigate('/pricing')
+
     navigate('/control-panel')
+
   }, [loginUser, navigate, searchParams])
 
   useEffect(() => {

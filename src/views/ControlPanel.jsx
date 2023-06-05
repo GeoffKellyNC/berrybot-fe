@@ -5,22 +5,15 @@ import * as authActions from '../store/auth/auth.actions'
 
 const ControlPanel = ({
     isAuthenticated,
+    isVerifying,
     userData,
     verifyUserAccessToken
 }) => {
 
-    const [isVerifing, setIsVerifing] = useState(false)
 
     const handleVerify = useCallback(async () => {
-        setIsVerifing(true)
         await verifyUserAccessToken()
-        if(isAuthenticated){
-            setIsVerifing(false)
-        }else{
-            console.log('error verifying user')
-        }
-        
-    }, [isAuthenticated, verifyUserAccessToken])
+    }, [verifyUserAccessToken])
 
     useEffect(() => {
         handleVerify()
@@ -32,7 +25,7 @@ const ControlPanel = ({
     return(
         <div>
             {
-                isVerifing ? <h1>Verifying...</h1> 
+                isVerifying ? <h1>Verifying...</h1> 
                 : (
                     <h1> Welcome {userData.twitch_display} </h1>
                 )
@@ -43,7 +36,8 @@ const ControlPanel = ({
 
 export default connect(st => ({
     userData: st.userData,
-    isAuthenticated: st.isAuthenticated
+    isAuthenticated: st.isAuthenticated,
+    isVerifying: st.isVerifying
 }),{
     verifyUserAccessToken: authActions.verifyUserAccessToken
 }) (ControlPanel)

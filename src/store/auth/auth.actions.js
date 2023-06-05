@@ -12,9 +12,6 @@ export const loginUser = (code) => async dispatch => {
         console.log("LOGGING IN!!!!")
         const loginRes = await axios.post(`${BASE_URL}/auth/login`, 
         { code })
-
-        console.log('LOGIN RES: ', loginRes.data) //!DEBUG
-
         const userData = loginRes.data
 
         if(userData.userData.user_paid){
@@ -55,18 +52,23 @@ export const loginUser = (code) => async dispatch => {
 
 export const verifyUserAccessToken = () => async dispatch => {
     try {
-        console.log(`GETTING AUTH: ${BASE_URL}/auth/verify-accessToken`) //!DEBUG
+
+        dispatch({
+            type: authTypes.SET_IS_VERIFYING,
+            payload: true
+        })
+
         const verifyRes = await axiosWithAuth().get(`${BASE_URL}/auth/verify-accessToken`)
 
-        console.log('GOT AUTH....') //!DEBUG
-
-        console.log('VERIFY RES: ', verifyRes.data) //!DEBUG
+        dispatch({
+            type: authTypes.SET_IS_VERIFYING,
+            payload: false
+        })
 
         dispatch({
             type: authTypes.SET_AUTH_STATE,
             payload: true
         })
-
 
         
     } catch (error) {

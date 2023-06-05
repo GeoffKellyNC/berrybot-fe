@@ -9,3 +9,12 @@ export function isAuthenticated(state = false, action){
             return sessionStorage.getItem('isAuth') ? JSON.parse(sessionStorage.getItem('isAuth')) : state
     }
 }
+
+export function isVerifying(state = false, action){
+    switch(action.type){
+        case authTypes.SET_IS_VERIFYING:
+            return action.payload
+        default:
+            return state
+    }
+}
