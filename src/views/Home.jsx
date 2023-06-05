@@ -1,28 +1,47 @@
-import React from 'react'
-import twitchLoginLink from '../util/twitchLoginLink';
+import React, { useState } from 'react'
+import styled from 'styled-components'
 
-// ANT D COMPONENT IMPORTS
-import { Button } from 'antd';
+// Components Imports
+import HomeNav from '../components/Home/HomeNav'
+import HomeMovileNave from '../components/Home/HomeMobileNav'
+
+
+
+// ANTD COMPONENT IMPORTS
+import { MenuOutlined } from '@ant-design/icons'
+
 
 
 
 
 
 const HomePage = () => {
+    const [mobileOpen, setMobileOpen] = useState(false)
 
-    const handleLoginClick = (e) => {
-        e.preventDefault()
-        window.location.href = twitchLoginLink
-    }
+
     return(
-        <div>
-            <h1> Home Page </h1>
-            <Button 
-            type="primary"
-            onClick = {handleLoginClick}> Login </Button>
-        </div>
+        <Home>
+            <div className = 'top-section'>
+                <HomeNav />
+                <MenuOutlined />
+                {
+                    mobileOpen && <HomeMovileNave />
+                }
+            </div>
+        </Home>
     )
 }
 
 
 export default HomePage;
+
+
+const Home = styled.div`
+
+    .top-section {
+        background-color: black;
+        height: 100vh;
+    }
+
+
+`

@@ -12,3 +12,5 @@ export const SET_LOADING = 'SET_LOADING'
 export const FINISHED_LOADING = 'FINISHED_LOADING'
 
 export const SET_BERRY_MOD = 'SET_BERRY_MOD'
+
+export const SET_IS_VERIFYING = 'SET_IS_VERIFYING'

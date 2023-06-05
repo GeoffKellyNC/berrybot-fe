@@ -6,6 +6,7 @@ export function userData(state = {}, action){
         case userTypes.SET_USER_DATA:
             return action.payload
         default:
-            return state
+            const userData = JSON.parse(sessionStorage.getItem('userData')).userData
+            return userData ? userData : state
     }
 }
