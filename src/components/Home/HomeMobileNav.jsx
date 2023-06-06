@@ -1,13 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
 
 
 
 const HomeMobileNav = () => {
     return(
-        <div>
+        <MobileNav>
             <h1>Nav</h1>
-        </div>
+        </MobileNav>
     )
 }
 
 export default HomeMobileNav
+
+
+const MobileNav = styled.div`
+    background-color: black;
+
+`
