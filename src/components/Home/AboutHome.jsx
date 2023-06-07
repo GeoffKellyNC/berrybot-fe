@@ -10,22 +10,22 @@ const featuresData = [
     {
         title: 'Fully Customizable',
         icon: <ToggleAnimation />,
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+        description: 'Submit your ideas and have a say in Berry Bot development. Customize berry to your liking.'
     },
     {
         title: 'AI Powered by GPT-4',
         icon: <AiAnimation />,
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+        description: 'Enjoy advanced GPT-powered interactions in your chat.'
     },
     {
         title: 'Exclusive NCS Music',
         icon: <MusicWaveAnimation />,
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+        description: 'Access an exclusive library of non-copyrighted songs.'
     },
     {
         title: 'Smart Moderation',
         icon: <ChatAnimation />,
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.'
+        description: 'Smart AI powered chat moderation. Berry will keep your chat safe and issue punishments to rule breakers.'
     }
 ]
 
