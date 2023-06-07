@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import twitchLoginLink from '../../util/twitchLoginLink';
 
 import SpaceshipAnimation from './Spaceship';
+import TwitchAnimation from './TwitchAnime';
+import ParticlesBG from '../Particles/ParticlesBG'
+import HomeParticles from '../Particles/HomeParticles';
 
 import { Button } from 'antd';
 
@@ -14,24 +17,31 @@ const CTA = () => {
 
   return (
     <CallToAction>
+        <div className='particles-bg'>
+            {/* <HomeParticles /> */}
+            <ParticlesBG />
+        </div>
       <div className="row">
         <AnimationContainer>
           <SpaceshipAnimation />
         </AnimationContainer>
         <div className="col-md-6" id="desc">
-          <h1 className="title">Welcome to the Berry Bot</h1>
+          <h1 className="title">Welcome to Berry Bot</h1>
           <p className="description">
             Berry Bot: Elevate Your Twitch Experience with AI Integration, Advanced Features, and an Exclusive NCS Music Library!
           </p>
-          <Button 
-            className="login-btn" 
-            type="primary" 
-            ghost
-            onClick={handleLoginClick}
-            style={{"width": "200px", "height": "50px", "fontSize": "1.5rem"}}
-            >
-            Login
-          </Button>
+          <div className="login-btn-container">
+            <Button 
+                className="login-btn" 
+                type="primary" 
+                ghost
+                onClick={handleLoginClick}
+                style={{"width": "200px", "height": "50px", "fontSize": "1.5rem"}}
+                >
+                Login
+            </Button>
+            <TwitchAnimation />
+          </div>
         </div>
       </div>
     </CallToAction>
@@ -41,10 +51,12 @@ const CTA = () => {
 export default CTA;
 
 const CallToAction = styled.div`
-  color: ${(pr) => pr.theme.font.colors.primary};
+  color: ${(pr) => pr.theme.colors.secondary};
   background-color: ${(pr) => pr.theme.colors.dashboard_background};
   height: auto;
   width: 100%;
+  position: relative;
+
 
   .row {
     display: flex;
@@ -54,10 +66,11 @@ const CallToAction = styled.div`
   }
 
   .title {
-    font-size: 3rem;
+    color: ${(pr) => pr.theme.font.colors.primary};
+    font-size: 4rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    font-family: ${(pr) => pr.theme.font.family.primary};
+    font-family: ${(pr) => pr.theme.font.family.berry};
   }
 
   .description {
@@ -72,6 +85,7 @@ const CallToAction = styled.div`
   .col-md-6 {
     width: 50%;
     padding: 0 2rem;
+    z-index: 1;
   }
 
   .login-btn {
@@ -81,6 +95,22 @@ const CallToAction = styled.div`
         border-color: ${(pr) => pr.theme.colors.dashboard_background};
     }
   }
+
+    .particles-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    
+    }
+
+    .login-btn-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 300px;
+    }
 `;
 
 const AnimationContainer = styled.div`

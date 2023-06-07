@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 
 // Components Imports
+import AboutHome from '../components/Home/AboutHome'
 import HomeNav from '../components/Home/HomeNav'
 import HomeMovileNave from '../components/Home/HomeMobileNav'
 import CTA from '../components/Home/Cta'
@@ -26,6 +27,7 @@ const HomePage = () => {
                 mobileOpen && <HomeMovileNave />
             }
             <CTA />
+            <AboutHome />
         </Home>
     )
 }

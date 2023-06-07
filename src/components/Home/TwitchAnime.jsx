@@ -1,31 +1,31 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import spaceship from '../../assets/animations/robot.json';
+import twitch from '../../assets/animations/twitch.json';
 import styled from 'styled-components';
 
 
-const SpaceshipAnimation = () => {
+const TwitchAnimation = () => {
 
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: spaceship,
+        animationData: twitch,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice',
         },
       };
   
     return (
-      <Spaceship>
+      <Twitch>
         <Lottie options={defaultOptions} />
-      </Spaceship>
+      </Twitch>
     );
   }
   
-  export default SpaceshipAnimation;
+  export default TwitchAnimation;
 
-    const Spaceship = styled.div`
-        height: 600px;
-        width: 500px;
+    const Twitch = styled.div`
+        height: 100px;
+        width: 75px;
     `
   

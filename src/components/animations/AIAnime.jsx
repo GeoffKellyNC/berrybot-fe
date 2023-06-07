@@ -1,31 +1,31 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import spaceship from '../../assets/animations/robot.json';
+import Ai from '../../assets/animations/ai.json';
 import styled from 'styled-components';
 
 
-const SpaceshipAnimation = () => {
+const AiAnimation = () => {
 
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: spaceship,
+        animationData: Ai,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice',
         },
       };
   
     return (
-      <Spaceship>
+      <AiSection>
         <Lottie options={defaultOptions} />
-      </Spaceship>
+      </AiSection>
     );
   }
   
-  export default SpaceshipAnimation;
+  export default AiAnimation;
 
-    const Spaceship = styled.div`
-        height: 600px;
-        width: 500px;
+    const AiSection = styled.div`
+        height: 100px;
+        width: 75px;
     `
   

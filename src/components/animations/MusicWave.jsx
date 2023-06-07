@@ -1,31 +1,31 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import spaceship from '../../assets/animations/robot.json';
+import MusicWave from '../../assets/animations/musicWave.json';
 import styled from 'styled-components';
 
 
-const SpaceshipAnimation = () => {
+const MusicWaveAnimation = () => {
 
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: spaceship,
+        animationData: MusicWave,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice',
         },
       };
   
     return (
-      <Spaceship>
+      <MusicWaveSection>
         <Lottie options={defaultOptions} />
-      </Spaceship>
+      </MusicWaveSection>
     );
   }
   
-  export default SpaceshipAnimation;
+  export default MusicWaveAnimation;
 
-    const Spaceship = styled.div`
-        height: 600px;
-        width: 500px;
+    const MusicWaveSection = styled.div`
+        height: 100px;
+        width: 75px;
     `
   

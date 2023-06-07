@@ -18,14 +18,11 @@ const HomeNav = () => {
         <Nav>
             <div className='nav-left'>
                 <img src= {berryLogo} alt="logo" className = 'logo-nav'/>
-                {/* <div className = 'nav-links'>
+                <div className = 'nav-links'>
                     <NavLink to = '/pricing'> Pricing </NavLink>
                     <NavLink to = '/about'> About </NavLink>
                     <NavLink to = '/contact'> Contact </NavLink>
-                </div> */}
-            </div>
-            <div className='nav-right'>
-
+                </div>
             </div>
         </Nav>
     )
@@ -36,6 +33,7 @@ export default HomeNav
 
 const Nav = styled.div`
     background-color: black;
+    border-bottom: 1px solid ${pr => pr.theme.colors.primary};
 
     .logo-nav {
         padding: 1rem 2rem;
@@ -45,6 +43,39 @@ const Nav = styled.div`
         margin-right: 1rem;
     }
 
+    .nav-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 300px;
+    }
+
+    .nav-links a {
+        color: ${pr => pr.theme.font.colors.primary};
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 500;
+        font-family: ${pr => pr.theme.font.family.primary};
+        padding: 1rem 2rem;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .nav-links a:hover {
+        color: ${pr => pr.theme.colors.primary};
+        border-bottom: 1px solid ${pr => pr.theme.colors.primary};
+        border-radius: 5px;
+    }
+
+    .nav-links a.active {
+        color: ${pr => pr.theme.colors.primary};
+        background-color: ${pr => pr.theme.font.colors.primary};
+        border-radius: 5px;
+    }
 
 
 

@@ -1,31 +1,31 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import spaceship from '../../assets/animations/robot.json';
+import Chat from '../../assets/animations/chat.json';
 import styled from 'styled-components';
 
 
-const SpaceshipAnimation = () => {
+const ChatAnimation = () => {
 
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: spaceship,
+        animationData: Chat,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice',
         },
       };
   
     return (
-      <Spaceship>
+      <ChatSection>
         <Lottie options={defaultOptions} />
-      </Spaceship>
+      </ChatSection>
     );
   }
   
-  export default SpaceshipAnimation;
+  export default ChatAnimation;
 
-    const Spaceship = styled.div`
-        height: 600px;
-        width: 500px;
+    const ChatSection = styled.div`
+        height: 100px;
+        width: 75px;
     `
   

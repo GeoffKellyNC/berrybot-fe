@@ -1,31 +1,31 @@
 import React from 'react';
 import Lottie from 'react-lottie';
-import spaceship from '../../assets/animations/robot.json';
+import Toggle from '../../assets/animations/toggle.json';
 import styled from 'styled-components';
 
 
-const SpaceshipAnimation = () => {
+const ToggleAnimation = () => {
 
     const defaultOptions = {
         loop: true,
         autoplay: true,
-        animationData: spaceship,
+        animationData: Toggle,
         rendererSettings: {
           preserveAspectRatio: 'xMidYMid slice',
         },
       };
   
     return (
-      <Spaceship>
+      <ToggleSecion>
         <Lottie options={defaultOptions} />
-      </Spaceship>
+      </ToggleSecion>
     );
   }
   
-  export default SpaceshipAnimation;
+  export default ToggleAnimation;
 
-    const Spaceship = styled.div`
-        height: 600px;
-        width: 500px;
+    const ToggleSecion = styled.div`
+        height: 100px;
+        width: 124px;
     `
   

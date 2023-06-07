@@ -2,14 +2,15 @@
 export default {
     colors: {
 
-        primary: '#0070f3', // blue //  rgba(0, 112, 243, 1)
-        secondary: '#32EBCA', // lightblue // rgba(0, 185, 255, 1)
+        primary: '#216FFF', // blue //  rgba(0, 112, 243, 1)
+        secondary: '#f93eff', // lightblue // rgba(0, 185, 255, 1)
         accent: '#3DEFD4', // dark blue // rgba(13, 52, 89, 1)
         berry: '#ff003e', // rgba(255, 0, 62, 0.5) // Red
         berryLight: 'rgba(255, 0, 62, 0.5)', // Red // #ff003e
         green : '#00ff05', // green // rgba(0, 255, 5, 1)
         white: '#ffffff', // white // rgba(255, 255, 255, 1)
-        dashboard_background: "#100115", // dark blue // rgba(11, 29, 41, 1),
+        dashboard_background: "rgba(21 19 22);", // dark blue // rgba(11, 29, 41, 1),
+        black: '#000000', // black // rgba(0, 0, 0, 1),
         color_clear: 'rgba(6, 4, 10, 0.5)', // dark blue //
     },
     font: {
