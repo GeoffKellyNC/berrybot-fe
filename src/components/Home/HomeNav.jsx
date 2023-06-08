@@ -58,9 +58,9 @@ const Nav = styled.div`
     .nav-links a {
         color: ${pr => pr.theme.font.colors.primary};
         text-decoration: none;
-        font-size: 1rem;
-        font-weight: 500;
-        font-family: ${pr => pr.theme.font.family.primary};
+        font-size: 1.5rem;
+        font-weight: 100;
+        font-family: ${pr => pr.theme.font.family.secondary};
         padding: 1rem 2rem;
         transition: all 0.3s ease-in-out;
     }

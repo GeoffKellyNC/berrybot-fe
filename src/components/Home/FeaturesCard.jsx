@@ -29,6 +29,7 @@ const Card = styled.div`
     align-items: center;
     justify-content: center;
     z-index: 1;
+    border: 1px solid ${pr => pr.theme.colors.primary};
 
     .card-body {
         padding: 0 2rem;

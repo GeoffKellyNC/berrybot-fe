@@ -74,7 +74,8 @@ const CallToAction = styled.div`
   }
 
   .description {
-    font-size: 1.5rem;
+    color: white;
+    font-size: 1.7rem;
     font-weight: 400;
     width: 80%;
     margin-bottom: 1rem;
