@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import * as authActions from '../store/auth/auth.actions'
 
 // Components Imports
 import AboutHome from '../components/Home/AboutHome'
@@ -14,9 +16,9 @@ import CTA from '../components/Home/Cta'
 
 
 
-
-
-const HomePage = () => {
+const HomePage = ({
+    loginUserYouTube
+}) => {
     const [mobileOpen, setMobileOpen] = useState(false)
 
 
@@ -26,14 +28,18 @@ const HomePage = () => {
             {
                 mobileOpen && <HomeMovileNave />
             }
-            <CTA />
+            <CTA loginUserYouTube = { loginUserYouTube } />
             <AboutHome />
         </Home>
     )
 }
 
 
-export default HomePage;
+export default connect(st => ({
+
+}),{
+    loginUserYouTube: authActions.loginUserYouTube,
+}) (HomePage);
 
 
 const Home = styled.div`

@@ -7,25 +7,23 @@ const ControlPanel = ({
     isAuthenticated,
     isVerifying,
     userData,
-    verifyUserAccessToken
+    verifyUserTwitchAccessToken
 }) => {
 
 
     const handleVerify = useCallback(async () => {
-        await verifyUserAccessToken()
-    }, [verifyUserAccessToken])
+        await verifyUserTwitchAccessToken()
+    }, [verifyUserTwitchAccessToken])
 
     useEffect(() => {
         handleVerify()
     }, [handleVerify])
 
 
-
-
     return(
         <div>
             {
-                isVerifying ? <h1>Verifying...</h1> 
+                isVerifying ? <h1>Getting Data...</h1> 
                 : (
                     <h1> Welcome {userData.twitch_display} </h1>
                 )
@@ -39,5 +37,5 @@ export default connect(st => ({
     isAuthenticated: st.isAuthenticated,
     isVerifying: st.isVerifying
 }),{
-    verifyUserAccessToken: authActions.verifyUserAccessToken
+    verifyUserTwitchAccessToken: authActions.verifyUserTwitchAccessToken
 }) (ControlPanel)
