@@ -46,7 +46,7 @@ const CTA = ({ loginUserYouTube} ) => {
                 >
                 Login
             </Button>
-            <Button 
+            {/* <Button 
                 className="login-btn" 
                 type="primary" 
                 ghost
@@ -54,7 +54,7 @@ const CTA = ({ loginUserYouTube} ) => {
                 style={{"width": "200px", "height": "50px", "fontSize": "1.5rem"}}
                 >
                 Login YouTube
-            </Button>
+            </Button> */}
             <TwitchAnimation />
           </div>
         </div>

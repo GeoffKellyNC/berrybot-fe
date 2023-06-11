@@ -50,6 +50,48 @@ export const loginUserTwitch = (code) => async dispatch => {
     }
 }
 
+export const logoutUserTwitch = () => async dispatch => {
+    try {
+        console.log("LOGGING OUT!!!!")
+        // const logoutRes = await axiosWithAuth().get(`${BASE_URL}/auth/logout`)
+
+        dispatch({
+            type: authTypes.SET_AUTH_STATE,
+            payload: false
+        })
+
+        sessionStorage.setItem('isAuth', false)
+
+        dispatch({
+            type: userTypes.SET_USER_DATA,
+            payload: null
+        })
+
+        sessionStorage.removeItem('userData')
+        sessionStorage.removeItem('authData')
+        localStorage.clear()
+        sessionStorage.clear()
+
+        window.location.href = '/'
+
+        return true
+
+    } catch (error) {
+        console.log('THERE WAS AN ERROR: ', error.message)
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: "There was an error logging out " + error 
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 3000)
+    }
+}
+
 export const verifyUserTwitchAccessToken = () => async dispatch => {
     try {
 

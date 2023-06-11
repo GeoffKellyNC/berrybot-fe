@@ -10,3 +10,12 @@ export const currentStreamData = (state = null, action) => {
             return state;
     }
 };
+
+export const addRunning = (state = false, action) => {
+    switch (action.type) {
+        case tiwtchTypes.SET_ADD_RUNNING:
+            return action.payload;
+        default:
+            return state;
+    }
+}

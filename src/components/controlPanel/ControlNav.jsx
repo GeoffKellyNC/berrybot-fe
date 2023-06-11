@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import * as authActions from '../../store/auth/auth.actions'
 import styled from 'styled-components'
 import { AntDesignOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
@@ -9,7 +10,8 @@ import { Avatar } from 'antd';
 
 
 const ControlNav = ({
-    userData
+    userData,
+    logoutUserTwitch
 }) => {
     return(
         <Cnav>
@@ -27,7 +29,9 @@ const ControlNav = ({
                     <span className='link help-link'>Help</span>
                 </div>
                 <div className="logout-nav link-container">
-                    <span className='link logout-link'>Logout</span>
+                    <span
+                    onClick = {logoutUserTwitch}
+                    className='link logout-link'>Logout</span>
                 </div>
                 <div className="billing-nav link-container">
                     <span className='link billing-link'>Billing</span>
@@ -43,7 +47,7 @@ const ControlNav = ({
 export default connect(st => ({
     userData: st.userData
 }),{
-
+    logoutUserTwitch: authActions.logoutUserTwitch
 }) (ControlNav)
 
 
@@ -53,7 +57,7 @@ const Cnav = styled.div`
     align-items: center;
     width: 100%;
     height: 10vh;
-    background: ${pr => pr.theme.colors.dashboard_background};
+    background: ${pr => pr.theme.colors.black};
     color: white;
     box-shadow: 0 0 10px rgba(0,0,115,0.5);
     border-bottom: 1px solid ${pr => pr.theme.colors.primary};
@@ -114,7 +118,6 @@ const Cnav = styled.div`
         text-transform: uppercase;
         font-family: ${pr => pr.theme.font.family.secondary};
     }
-
 
 
 `
