@@ -7,7 +7,7 @@ import { axiosWithAuth } from '../../util/axiosAuth'
 
 const BASE_URL = process.env.REACT_APP_LOCAL_MODE ? process.env.REACT_APP_LOCAL_BASE_URL : process.env.REACT_APP_PROD_BASE_URL
 
-export const loginUser = (code) => async dispatch => {
+export const loginUserTwitch = (code) => async dispatch => {
     try {
         console.log("LOGGING IN!!!!")
         const loginRes = await axios.post(`${BASE_URL}/auth/login`, 
@@ -50,7 +50,7 @@ export const loginUser = (code) => async dispatch => {
     }
 }
 
-export const verifyUserAccessToken = () => async dispatch => {
+export const verifyUserTwitchAccessToken = () => async dispatch => {
     try {
 
         dispatch({
@@ -95,4 +95,62 @@ export const verifyUserAccessToken = () => async dispatch => {
         return
 
     }
+}
+
+
+//* YOUTUBE FUNCTIONS
+
+export const loginUserYouTube = () => async dispatch => {
+    try {
+        console.log("LOGGING IN YOUTUBE!!!!")
+        const loginRes = await axios.get(`${BASE_URL}/youtube/auth/login-youtube`)
+
+        console.log("LOGIN RES YT: ", loginRes.data)
+
+        window.location.href = loginRes.data
+
+        return
+
+    } catch (error) {
+        console.log('THERE WAS AN ERROR: ', error.message)
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: "There was an error logging in " + error 
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 3000)
+    }
+}
+
+export const sendYTAuthCode = (code) => async dispatch => {
+    try {
+        console.log("SENDING CODE TO SERVER: ", code)
+        const loginYTRes = await axios.post(`${BASE_URL}/youtube/auth/login-youtube`, 
+        { code })
+
+        console.log("LOGIN RES YT: ", loginYTRes.data) //! DEBUG
+
+
+        return
+
+    } catch (error) {
+        console.log('THERE WAS AN ERROR: ', error.message)
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: "There was an error logging in " + error 
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 3000)
+    }
+
 }

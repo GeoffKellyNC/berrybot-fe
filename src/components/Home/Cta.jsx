@@ -9,11 +9,17 @@ import HomeParticles from '../Particles/HomeParticles';
 
 import { Button } from 'antd';
 
-const CTA = () => {
+const CTA = ({ loginUserYouTube} ) => {
+
   const handleLoginClick = (e) => {
     e.preventDefault();
     window.location.href = twitchLoginLink;
   };
+
+  const handleLoginYouTubeClick = (e) => {
+    e.preventDefault();
+    loginUserYouTube();
+};
 
   return (
     <CallToAction>
@@ -39,6 +45,15 @@ const CTA = () => {
                 style={{"width": "200px", "height": "50px", "fontSize": "1.5rem"}}
                 >
                 Login
+            </Button>
+            <Button 
+                className="login-btn" 
+                type="primary" 
+                ghost
+                onClick={handleLoginYouTubeClick}
+                style={{"width": "200px", "height": "50px", "fontSize": "1.5rem"}}
+                >
+                Login YouTube
             </Button>
             <TwitchAnimation />
           </div>

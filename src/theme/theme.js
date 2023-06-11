@@ -9,7 +9,7 @@ export default {
         berryLight: 'rgba(255, 0, 62, 0.5)', // Red // #ff003e
         green : '#00ff05', // green // rgba(0, 255, 5, 1)
         white: '#ffffff', // white // rgba(255, 255, 255, 1)
-        dashboard_background: "rgba(21 19 22);", // dark blue // rgba(11, 29, 41, 1),
+        dashboard_background: "rgba(21 19 22);", // dark blue // rgba(11, 11, 21, 1),
         black: '#000000', // black // rgba(0, 0, 0, 1),
         color_clear: 'rgba(6, 4, 10, 0.5)', // dark blue //
     },
@@ -23,7 +23,7 @@ export default {
         size: {
             small: '0.5rem',
             medium: '0.8rem',
-            large: '1rem',
+            large: '0.9rem',
             xl: '1.2rem',
             xl_landing: '1.4rem',
             xxl: '1.6rem',
