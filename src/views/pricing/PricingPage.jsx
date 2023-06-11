@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import berryImg from '../../assets/images/berry.png';
 import { connect } from 'react-redux';
+import { axiosWithAuth } from '../../util/axiosAuth';
 
 const features = [
   {
@@ -39,7 +40,11 @@ const features = [
   },
 ];
 
+
+
 const Pricing = ({ userData }) => {
+
+
   return (
     <PricingStyled>
       <NavLink to="/">
@@ -55,9 +60,7 @@ const Pricing = ({ userData }) => {
         <p>Get access to Berry Bot for just $5.99/month plus tax!</p>
         <form
           action={
-            process.env.REACT_APP_LOCAL_MODE
-              ? `http://localhost:9001/payments/create-checkout-session?unx_id=${userData.unx_id}`
-              : `${process.env.REACT_APP_BACKEND_URL}payments/create-checkout-session?unx_id=${userData.unx_id}`
+            `https://api.berrythebot.app/payments/create-checkout-session?unx_id=${userData.unx_id}`
           }
           method="POST"
         >

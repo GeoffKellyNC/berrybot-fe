@@ -6,6 +6,7 @@ import Home from './views/Home';
 import PricingPage from './views/pricing/PricingPage';
 import Redirect from './views/Redirect';
 import RedicrectYT from './views/RedirectYT';
+import Success from './views/pricing/Success';
 
 import ProtectedRoutes from './util/ProtectedRoutes';
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/redirect" element={<Redirect />} />
         <Route path="/yt-redirect" element={<RedicrectYT />} />
         <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/success" element={<Success />} />
         <Route path="/control-panel" element={
           <ProtectedRoutes>
             <ControlPanel />
