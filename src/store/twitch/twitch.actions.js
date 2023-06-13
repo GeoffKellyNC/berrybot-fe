@@ -85,7 +85,7 @@ export const runTwitchAd = (duration) => async dispatch => {
         console.log('Error: ', error) //!DEBUG
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
-            payload: error.response.data.message
+            payload: error.response.data.message ? error.response.data.message : error.response.data.error
         })
 
         setTimeout(() => {
@@ -96,5 +96,26 @@ export const runTwitchAd = (duration) => async dispatch => {
             , 5000)
 
         return
+    }
+}
+
+export const runTwitchPoll = (title, duration, pollOptions) => async dispatch => {
+    try {
+        const pollRes = await axiosWithAuth().post(`${BASE_URL}/twitch/start-twitch-poll`, { title, duration, pollOptions })
+
+        console.log("Poll Response: ", pollRes.data)
+        
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : error.response.data.error
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+            , 5000)
     }
 }

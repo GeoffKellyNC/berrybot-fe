@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import RunAd from './RunAd'
+import StartPoll from './StartPoll'
 
 
 
@@ -12,6 +13,7 @@ const QuickActions = () => {
     return (
         <Qa>
             <RunAd />
+            <StartPoll />
         </Qa>
     )
 }
