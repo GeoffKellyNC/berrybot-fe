@@ -19,3 +19,12 @@ export const addRunning = (state = false, action) => {
             return state;
     }
 }
+
+export const twitchChatSettings = (state = null, action) => {
+    switch (action.type) {
+        case tiwtchTypes.SET_TWITCH_CHAT_SETTINGS:
+            return action.payload;
+        default:
+            return state;
+    }
+}

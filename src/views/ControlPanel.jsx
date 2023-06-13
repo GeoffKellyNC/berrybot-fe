@@ -20,7 +20,8 @@ const ControlPanel = ({
     isVerifying,
     getCurrentStreamData,
     userData,
-    verifyUserTwitchAccessToken
+    verifyUserTwitchAccessToken,
+    getTwitchChatSettings
 }) => {
 
     const dispatch = useDispatch()
@@ -54,13 +55,14 @@ const ControlPanel = ({
 
         await verifyUserTwitchAccessToken()
         await getCurrentStreamData()
+        await getTwitchChatSettings()
         welcomeNotify()
 
         dispatch({
             type: authTypes.SET_IS_VERIFYING,
             payload: false
         })
-    }, [dispatch, getCurrentStreamData, verifyUserTwitchAccessToken])
+    }, [dispatch, getCurrentStreamData, getTwitchChatSettings, verifyUserTwitchAccessToken])
 
     useEffect(() => {
         handleVerify()
@@ -92,10 +94,12 @@ const ControlPanel = ({
 export default connect(st => ({
     userData: st.userData,
     isAuthenticated: st.isAuthenticated,
-    isVerifying: st.isVerifying
+    isVerifying: st.isVerifying,
+    
 }),{
     verifyUserTwitchAccessToken: authActions.verifyUserTwitchAccessToken,
-    getCurrentStreamData: twitchActions.getCurrentStreamData
+    getCurrentStreamData: twitchActions.getCurrentStreamData,
+    getTwitchChatSettings: twitchActions.getTwitchChatSettings
 }) (ControlPanel)
 
 

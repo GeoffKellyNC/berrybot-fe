@@ -119,3 +119,79 @@ export const runTwitchPoll = (title, duration, pollOptions) => async dispatch =>
             , 5000)
     }
 }
+
+export const createTwitchClip = () => async dispatch => {
+    try {
+        const clipRes = await axiosWithAuth().post(`${BASE_URL}/twitch/create-twitch-clip`)
+
+        console.log("Clip Response: ", clipRes.data)
+
+        dispatch({
+            type: notifyTypes.SET_APP_NOTIFICATION,
+            payload: clipRes.data.message
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_APP_NOTIFICATION
+            })
+        }
+            , 5000)
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : error.response.data.error
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+            , 5000)
+    }
+}
+
+
+export const getTwitchChatSettings = () => async dispatch => {
+    try {
+        const res = await axiosWithAuth().get(`${BASE_URL}/twitch/get-twitch-chat-settings`)
+
+        console.log("Twitch Chat Settings: ", res.data) //!DEBUG    
+
+        if(res.status !== 200){
+            dispatch({
+                type: notifyTypes.SET_ERROR_NOTIFICATION,
+                payload: 'Error getting Twitch Chat Settings'
+            })
+
+            setTimeout(() => {
+                dispatch({
+                    type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+                })
+            }
+                , 5000)
+        }
+
+        dispatch({
+            type: twitchTypes.SET_TWITCH_CHAT_SETTINGS,
+            payload: res.data
+        })
+
+
+
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : 'Error getting Twitch Chat Settings'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+            , 5000)
+            
+    }
+}

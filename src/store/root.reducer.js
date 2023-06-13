@@ -7,6 +7,7 @@ import { currentStreamData } from "./twitch/twitch.reducer";
 import { isAuthenticated } from "./auth/auth.reducer";
 import { isVerifying } from "./auth/auth.reducer";
 import { nofifyActive } from "./notify/notify.reducer";
+import { twitchChatSettings } from "./twitch/twitch.reducer";
 import { userData } from "./user/user.reducer";
 
 
@@ -18,5 +19,6 @@ export default combineReducers({
     isAuthenticated,
     isVerifying,
     nofifyActive,
+    twitchChatSettings,
     userData
 });

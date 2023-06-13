@@ -51,7 +51,7 @@ const RunAd = ({ userData, runTwitchAd }) => {
         type='primary'
         ghost
         style={{
-          width: '100px',
+          width: '150px',
           height: '30px',
           fontSize: '12px',
         }}
