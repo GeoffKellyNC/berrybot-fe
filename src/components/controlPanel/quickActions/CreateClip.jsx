@@ -18,7 +18,7 @@ const CreateClip = ({
             type='primary'
             ghost
             style={{
-                width: '150px',
+                width: '100px',
                 height: '30px',
                 fontSize: '12px',
             }}

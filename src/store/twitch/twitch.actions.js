@@ -157,7 +157,6 @@ export const getTwitchChatSettings = () => async dispatch => {
     try {
         const res = await axiosWithAuth().get(`${BASE_URL}/twitch/get-twitch-chat-settings`)
 
-        console.log("Twitch Chat Settings: ", res.data) //!DEBUG    
 
         if(res.status !== 200){
             dispatch({
@@ -178,6 +177,8 @@ export const getTwitchChatSettings = () => async dispatch => {
             payload: res.data
         })
 
+        return
+
 
 
     } catch (error) {
@@ -193,5 +194,50 @@ export const getTwitchChatSettings = () => async dispatch => {
         }
             , 5000)
             
+    }
+}
+
+export const updateTwitchChatSetting = (setting, value) => async dispatch => {
+    try {
+        const res = await axiosWithAuth().post(`${BASE_URL}/twitch/update-twitch-chat-settings`, { setting, value })
+
+        return res.data
+
+
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : 'Error updating Twitch Chat Settings'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+            , 5000)
+    }
+}
+
+export const updateUserAiConfig = (aiConfig) => async dispatch => {
+    try {
+        const res = await axiosWithAuth().post(`${BASE_URL}/twitch/update-user-ai-settings`, { aiConfig })
+
+        console.log('AI RES: ', res.data) //!DEBUG
+        
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : 'Error updating Twitch Chat Settings'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+            , 5000)
+
+        return
     }
 }

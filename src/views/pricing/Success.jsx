@@ -7,7 +7,6 @@ import * as userActions from '../../store/user/user.actions'
 
 const Success = ({
   userData,
-  setStripeSessionId
 }) => {
 
   const nav = useNavigate()
@@ -23,14 +22,9 @@ const Success = ({
     const sessionId = urlParams.get('session_id')
 
     if (success && sessionId) {
-    //   await setStripeSessionId(sessionId, userData.unx_id)
-    console.log('success')
-    console.log('Session ID: ', sessionId) //!DEBUG
-    console.log('User ID: ', userData.unx_id) //!DEBUG
-    console.log('URL Params: ', urlParams) //!DEBUG
       return
     }
-  }, [setStripeSessionId, urlParams, userData.unx_id])
+  }, [urlParams])
 
   useEffect(() => {
     handleSuccess()
@@ -52,7 +46,6 @@ const Success = ({
 export default connect(st => ({
   userData: st.userData
 }),{
-  setStripeSessionId: userActions.setStripeSessionId
 }) (Success)
 
 const SuccessStyled = styled.div`

@@ -24,10 +24,6 @@ const StreamStatus = ({
                 csd && csd.type === 'live' ? <span className = 'status-text'> Live </span> : <span className = 'status-text'> Offline </span>
             }
         </div>
-        <div className='stream-title status-section'>
-            <span className = 'title-text'> Stream Title:  </span>
-            <span className='status-text'> {csd ? csd.title : 'Offline'} </span>
-        </div>
         <div className='stream-game status-section'>
             <span className = 'game-text'> Category:  </span>
             <span className='status-text'> {csd ? csd.game_name : 'Offline'} </span>
@@ -35,6 +31,10 @@ const StreamStatus = ({
         <div className='stream-viewers status-section'>
             <span className = 'viewers-text'> Viewers:  </span>
             <span className='status-text'> {csd ? csd.viewer_count : 0} </span>
+        </div>
+        <div className='stream-title status-section'>
+            <span className = 'title-text'> Title:  </span>
+            <span className='status-text'> {csd ? csd.title : 'Offline'} </span>
         </div>
     </StreamState>
   )
@@ -101,6 +101,14 @@ const StreamState = styled.div`
     .viewers-text {
         color: #ffdb11;
         font-size: ${pr => pr.theme.font.size.medium};
+    }
+
+    .stream-title {
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 5px;
     }
 
     

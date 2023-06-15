@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect , useCallback } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as authActions from '../../store/auth/auth.actions'
+import * as userActions from '../../store/user/user.actions'
 import styled from 'styled-components'
 import { AntDesignOutlined } from '@ant-design/icons';
 import { Avatar } from 'antd';
@@ -11,8 +12,27 @@ import { Avatar } from 'antd';
 
 const ControlNav = ({
     userData,
-    logoutUserTwitch
+    logoutUserTwitch,
+    getStripeId,
+    sendCusPortal
 }) => {
+    const [stripeId, setStripeId] = useState(null)
+
+
+    const handleBilling = async () => {
+        await sendCusPortal(stripeId)
+    }
+
+    const setUp = useCallback(async () => {
+        const id = await getStripeId(userData.twitch_login)
+        setStripeId(id)
+        return
+    }, [getStripeId, userData.twitch_login])
+
+    useEffect(() => {
+        setUp()
+    }, [setUp])
+
     return(
         <Cnav>
             <div className = 'left-nav'>
@@ -34,7 +54,9 @@ const ControlNav = ({
                     className='link logout-link'>Logout</span>
                 </div>
                 <div className="billing-nav link-container">
-                    <span className='link billing-link'>Billing</span>
+                    <span 
+                        onClick = {handleBilling}
+                        className='link billing-link'>Billing</span>
                 </div>
                 <div className = 'feature-req-nav link-container'>
                     <NavLink to = '/feature-requests' className = 'link feature-req-link'> Requests </NavLink>
@@ -47,7 +69,9 @@ const ControlNav = ({
 export default connect(st => ({
     userData: st.userData
 }),{
-    logoutUserTwitch: authActions.logoutUserTwitch
+    logoutUserTwitch: authActions.logoutUserTwitch,
+    getStripeId: userActions.getStripeId,
+    sendCusPortal: userActions.sendCusPortal
 }) (ControlNav)
 
 

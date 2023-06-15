@@ -25,7 +25,7 @@ export default connect(st => ({
 
 
 const Ais = styled.div`
-background-image: linear-gradient(to right, #a603ff, #d900c9, #ee0097, #ef006c, #e4004b);
+    background-image: linear-gradient(to right, #a603ff, #d900c9, #ee0097, #ef006c, #e4004b);
     width: 10% ;
     height: 30px;
     border-radius: 10px;

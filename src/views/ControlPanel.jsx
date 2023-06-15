@@ -8,11 +8,14 @@ import styled from 'styled-components'
 
 
 // Imported Components
-import ControlNav  from '../components/controlPanel/ControlNav'
-import StatusBar from '../components/controlPanel/statusBar/StatusBar';
-import QuickActions from '../components/controlPanel/quickActions/QuickActions';
-import ErrorNotify from '../components/notifications/ErrorNotify';
+import AiSettings from '../components/controlPanel/aiSettings/AiSettings';
 import AppNotifications from '../components/notifications/AppNotifications';
+import ControlNav  from '../components/controlPanel/ControlNav'
+import ErrorNotify from '../components/notifications/ErrorNotify';
+import QuickActions from '../components/controlPanel/quickActions/QuickActions';
+import TwitchChatSettings from '../components/controlPanel/twitchChatSettings/TwitchChatSettings';
+import StatusBar from '../components/controlPanel/statusBar/StatusBar';
+import GPTChat from '../components/gptChat/GptChat'
 
 
 const ControlPanel = ({
@@ -79,10 +82,16 @@ const ControlPanel = ({
                         <ErrorNotify />
                         <ControlNav />
                         <StatusBar />
-                        <div className = 'control-panel-body'>
-                            <QuickActions />
-
-                        </div>
+                        <ControlPanelBody>
+                            <div className = 'col-2'>
+                                <QuickActions />
+                                <TwitchChatSettings />
+                                <AiSettings />
+                            </div>
+                            <div className = 'col-2'>
+                                <GPTChat />
+                            </div>
+                        </ControlPanelBody>
                     </>
                 )
 
@@ -108,14 +117,16 @@ const Cpanel = styled.div`
     background: ${pr => pr.theme.colors.black};
     height: 100vh;
     color: white;
+`
 
-    .control-panel-body {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-evenly;
-    }
-    
+
+const ControlPanelBody = styled.div`
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr;
+    gap: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    justify-items: start;
+
 
 `
