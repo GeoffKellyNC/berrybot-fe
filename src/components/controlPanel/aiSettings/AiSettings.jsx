@@ -16,11 +16,12 @@ const AiSettings = ({
         // setChanges(true);
         const { name, value } = e.target;
         if (path === "thresholds") {
+          const valueNum = parseFloat(value);
           setConfig((prev) => ({
             ...prev,
             thresholds: {
               ...prev.thresholds,
-              [name]: value,
+              [name]: valueNum,
             },
           }));
         } else if (path.startsWith("punishments")) {

@@ -14,17 +14,26 @@ export const loginUserTwitch = (code) => async dispatch => {
         { code })
         const userData = loginRes.data
 
-        if(userData.userData.user_paid){
-            dispatch({
-                type: authTypes.SET_AUTH_STATE,
-                payload: true
-            })
+        if(!userData.userData.user_paid){
 
             dispatch({
                 type: userTypes.SET_USER_DATA,
                 payload: loginRes.data.userData
             })
+            sessionStorage.setItem('userData', JSON.stringify(userData))
+
+            return 
         }
+
+        dispatch({
+            type: authTypes.SET_AUTH_STATE,
+            payload: true
+        })
+
+        dispatch({
+            type: userTypes.SET_USER_DATA,
+            payload: loginRes.data.userData
+        })
 
         // set userdata to session storage
 
