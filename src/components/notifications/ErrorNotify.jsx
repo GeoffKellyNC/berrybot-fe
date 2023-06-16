@@ -1,7 +1,7 @@
 import React from 'react'
 import { message } from 'antd';
-import { connect, useDispatch } from 'react-redux'
-import styled from 'styled-components'
+import { connect } from 'react-redux'
+// import styled from 'styled-components'
 
 
 const ErrorNotify = ({

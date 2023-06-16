@@ -3,7 +3,6 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import styled from 'styled-components'
 
-import { FaRobot } from 'react-icons/fa'
 
 
 const ParticlesBG = () => {

@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback, useState} from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import * as twitchActions from '../store/twitch/twitch.actions'
 import * as authActions from '../store/auth/auth.actions'
@@ -65,6 +65,7 @@ const ControlPanel = ({
             type: authTypes.SET_IS_VERIFYING,
             payload: false
         })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, getCurrentStreamData, getTwitchChatSettings, verifyUserTwitchAccessToken])
 
     useEffect(() => {

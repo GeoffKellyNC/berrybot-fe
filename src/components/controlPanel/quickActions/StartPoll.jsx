@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { connect } from 'react-redux';
 import * as twitchActions from '../../../store/twitch/twitch.actions'
 
-import { PlusOutlined } from '@ant-design/icons';
 
 const GradientModal = styled(Modal)`
   .ant-modal-content { 
@@ -114,10 +113,10 @@ const StartPoll = ({
         setPollOptions(pollOptions.filter((_, index) => index !== indexToRemove));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Poll Options:', pollOptions);
-    };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log('Poll Options:', pollOptions);
+    // };
 
   return (
     <> 

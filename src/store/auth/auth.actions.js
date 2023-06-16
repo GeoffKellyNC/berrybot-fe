@@ -109,7 +109,7 @@ export const verifyUserTwitchAccessToken = () => async dispatch => {
             payload: true
         })
 
-        const verifyRes = await axiosWithAuth().get(`${BASE_URL}/auth/verify-accessToken`)
+        await axiosWithAuth().get(`${BASE_URL}/auth/verify-accessToken`)
 
         dispatch({
             type: authTypes.SET_IS_VERIFYING,

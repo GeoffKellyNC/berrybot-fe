@@ -1,7 +1,6 @@
 import { axiosWithAuth } from "../../util/axiosAuth";
 import * as twitchTypes from "./twitch.types";
 import * as notifyTypes from "../notify/notify.types"
-import { duration } from "@mui/material";
 
 const BASE_URL = process.env.REACT_APP_LOCAL_MODE ? process.env.REACT_APP_LOCAL_BASE_URL : process.env.REACT_APP_PROD_BASE_URL
 

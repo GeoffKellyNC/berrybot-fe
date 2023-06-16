@@ -1,9 +1,8 @@
-import { Search } from '@mui/icons-material'
 import React, { useEffect, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import * as userActions from '../../store/user/user.actions'
+// import * as userActions from '../../store/user/user.actions'
 
 const Success = ({
   userData,

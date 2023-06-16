@@ -5,7 +5,6 @@ import twitchLoginLink from '../../util/twitchLoginLink';
 import SpaceshipAnimation from './Spaceship';
 import TwitchAnimation from './TwitchAnime';
 import ParticlesBG from '../Particles/ParticlesBG'
-import HomeParticles from '../Particles/HomeParticles';
 
 import { Button } from 'antd';
 
@@ -16,15 +15,14 @@ const CTA = ({ loginUserYouTube} ) => {
     window.location.href = twitchLoginLink;
   };
 
-  const handleLoginYouTubeClick = (e) => {
-    e.preventDefault();
-    loginUserYouTube();
-};
+//   const handleLoginYouTubeClick = (e) => {
+//     e.preventDefault();
+//     loginUserYouTube();
+// };
 
   return (
     <CallToAction>
         <div className='particles-bg'>
-            {/* <HomeParticles /> */}
             <ParticlesBG />
         </div>
       <div className="row">

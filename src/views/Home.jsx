@@ -19,6 +19,7 @@ import CTA from '../components/Home/Cta'
 const HomePage = ({
     loginUserYouTube
 }) => {
+    // eslint-disable-next-line no-unused-vars
     const [mobileOpen, setMobileOpen] = useState(false)
 
 

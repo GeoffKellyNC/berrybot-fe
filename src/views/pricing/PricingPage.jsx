@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import berryImg from '../../assets/images/berry.png';
 import { connect } from 'react-redux';
-import { axiosWithAuth } from '../../util/axiosAuth';
 
 const features = [
   {

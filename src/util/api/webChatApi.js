@@ -1,6 +1,5 @@
 import { axiosWithAuth } from "../axiosAuth";
 
-const LOCAL = process.env.REACT_APP_LOCAL_MODE
 
 const WEB_CHAT_EP = 'https://api.berrythebot.app/ai/chat-from-web'
 
