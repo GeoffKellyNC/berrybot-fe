@@ -17,10 +17,10 @@ import { applyMiddleware, compose, legacy_createStore as createStore } from 'red
 import thunk from 'redux-thunk';
 import reducer from './store/root.reducer';
 
-const LOCAL = process.env.REACT_APP_LOCAL_MODE;
+// const LOCAL = process.env.REACT_APP_LOCAL_MODE;
 
 const composeEnhancers =
-  (LOCAL === 'true' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
+  (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)));
 
 

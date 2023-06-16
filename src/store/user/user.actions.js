@@ -5,7 +5,7 @@ import * as notifyTypes from "../notify/notify.types";
 
 
 
-const BASE_URL = process.env.REACT_APP_LOCAL_MODE ? process.env.REACT_APP_LOCAL_BASE_URL : process.env.REACT_APP_PROD_BASE_URL
+const BASE_URL = process.env.REACT_APP_PROD_BASE_URL
 
 
 export const getStripeId = (twitch_login) => async dispatch => {

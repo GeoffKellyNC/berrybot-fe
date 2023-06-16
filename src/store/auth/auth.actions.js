@@ -5,7 +5,7 @@ import axios from 'axios'
 import { axiosWithAuth } from '../../util/axiosAuth'
 
 
-const BASE_URL = process.env.REACT_APP_LOCAL_MODE ? process.env.REACT_APP_LOCAL_BASE_URL : process.env.REACT_APP_PROD_BASE_URL
+const BASE_URL =  process.env.REACT_APP_PROD_BASE_URL
 
 export const loginUserTwitch = (code) => async dispatch => {
     try {
