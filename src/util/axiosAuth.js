@@ -15,5 +15,5 @@ export const axiosWithAuth = () => {
             access_token: accessToken,
             twitch_id: twitchId
         },
-    });
+    }); 
 };
