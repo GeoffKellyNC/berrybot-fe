@@ -1,23 +1,20 @@
 import React from 'react';
-import Lottie from 'react-lottie';
 import MusicWave from '../../assets/animations/musicWave.json';
 import styled from 'styled-components';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 
 const MusicWaveAnimation = () => {
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: MusicWave,
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice',
-        },
-      };
-  
+
     return (
       <MusicWaveSection>
-        <Lottie options={defaultOptions} />
+        <Player
+          autoplay
+          loop
+          src={MusicWave}
+          style={{ height: '100px', width: '75px' }}
+        />
       </MusicWaveSection>
     );
   }

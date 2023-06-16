@@ -1,23 +1,20 @@
 import React from 'react';
-import Lottie from 'react-lottie';
+import { Player } from '@lottiefiles/react-lottie-player';
 import spaceship from '../../assets/animations/robot.json';
 import styled from 'styled-components';
 
 
 const SpaceshipAnimation = () => {
 
-    const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: spaceship,
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice',
-        },
-      };
   
     return (
       <Spaceship>
-        <Lottie options={defaultOptions} />
+        <Player
+          autoplay
+          loop
+          src={spaceship}
+          style={{ height: '600px', width: '500px' }}
+        />
       </Spaceship>
     );
   }
