@@ -2,6 +2,7 @@ import React, { useEffect, useCallback } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import * as twitchActions from '../store/twitch/twitch.actions'
 import * as authActions from '../store/auth/auth.actions'
+import * as musicActions from '../store/music/music.actions'
 import * as authTypes from '../store/auth/auth.types'
 import * as notifyTypes from '../store/notify/notify.types'
 import styled from 'styled-components'
@@ -12,10 +13,11 @@ import AiSettings from '../components/controlPanel/aiSettings/AiSettings';
 import AppNotifications from '../components/notifications/AppNotifications';
 import ControlNav  from '../components/controlPanel/ControlNav'
 import ErrorNotify from '../components/notifications/ErrorNotify';
-import QuickActions from '../components/controlPanel/quickActions/QuickActions';
-import TwitchChatSettings from '../components/controlPanel/twitchChatSettings/TwitchChatSettings';
-import StatusBar from '../components/controlPanel/statusBar/StatusBar';
 import GPTChat from '../components/gptChat/GptChat'
+import Music from '../components/music/Music';
+import QuickActions from '../components/controlPanel/quickActions/QuickActions';
+import StatusBar from '../components/controlPanel/statusBar/StatusBar';
+import TwitchChatSettings from '../components/controlPanel/twitchChatSettings/TwitchChatSettings';
 
 
 const ControlPanel = ({
@@ -24,7 +26,8 @@ const ControlPanel = ({
     getCurrentStreamData,
     userData,
     verifyUserTwitchAccessToken,
-    getTwitchChatSettings
+    getTwitchChatSettings,
+    getMusicData
 }) => {
 
     const dispatch = useDispatch()
@@ -59,6 +62,11 @@ const ControlPanel = ({
         await verifyUserTwitchAccessToken()
         await getCurrentStreamData()
         await getTwitchChatSettings()
+        await getMusicData()
+        dispatch({
+            type: authTypes.SET_USER_LEVEL,
+            payload: userData.account_type
+        })
         welcomeNotify()
 
         dispatch({
@@ -84,13 +92,16 @@ const ControlPanel = ({
                         <ControlNav />
                         <StatusBar />
                         <ControlPanelBody>
-                            <div className = 'col-2'>
+                            <div className = 'col-1'>
                                 <QuickActions />
                                 <TwitchChatSettings />
                                 <AiSettings />
                             </div>
                             <div className = 'col-2'>
                                 <GPTChat />
+                            </div>
+                            <div className = 'col-3'>
+                                <Music />
                             </div>
                         </ControlPanelBody>
                     </>
@@ -109,7 +120,8 @@ export default connect(st => ({
 }),{
     verifyUserTwitchAccessToken: authActions.verifyUserTwitchAccessToken,
     getCurrentStreamData: twitchActions.getCurrentStreamData,
-    getTwitchChatSettings: twitchActions.getTwitchChatSettings
+    getTwitchChatSettings: twitchActions.getTwitchChatSettings,
+    getMusicData: musicActions.getMusicData
 }) (ControlPanel)
 
 

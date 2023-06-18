@@ -35,6 +35,11 @@ export const loginUserTwitch = (code) => async dispatch => {
             payload: loginRes.data.userData
         })
 
+        dispatch({
+            type: authTypes.SET_USER_LEVEL,
+            payload: loginRes.data.userData.account_type
+        })
+
         // set userdata to session storage
 
         sessionStorage.setItem('userData', JSON.stringify(userData))
@@ -59,22 +64,11 @@ export const loginUserTwitch = (code) => async dispatch => {
     }
 }
 
-export const logoutUserTwitch = () => async dispatch => {
+export const logoutUserTwitch = (channel) => async dispatch => {
     try {
         console.log("LOGGING OUT!!!!")
-        // const logoutRes = await axiosWithAuth().get(`${BASE_URL}/auth/logout`)
+        await axiosWithAuth().post(`${BASE_URL}/auth/logout`, { channel })
 
-        dispatch({
-            type: authTypes.SET_AUTH_STATE,
-            payload: false
-        })
-
-        sessionStorage.setItem('isAuth', false)
-
-        dispatch({
-            type: userTypes.SET_USER_DATA,
-            payload: null
-        })
 
         sessionStorage.removeItem('userData')
         sessionStorage.removeItem('authData')

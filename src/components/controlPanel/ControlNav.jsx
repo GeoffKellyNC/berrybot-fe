@@ -14,7 +14,8 @@ const ControlNav = ({
     userData,
     logoutUserTwitch,
     getStripeId,
-    sendCusPortal
+    sendCusPortal,
+    userLevel
 }) => {
     const [stripeId, setStripeId] = useState(null)
 
@@ -50,7 +51,7 @@ const ControlNav = ({
                 </div>
                 <div className="logout-nav link-container">
                     <span
-                    onClick = {logoutUserTwitch}
+                    onClick = {() => logoutUserTwitch(userData.twitch_login)}
                     className='link logout-link'>Logout</span>
                 </div>
                 <div className="billing-nav link-container">
@@ -61,13 +62,21 @@ const ControlNav = ({
                 <div className = 'feature-req-nav link-container'>
                     <NavLink to = '/feature-requests' className = 'link feature-req-link'> Requests </NavLink>
                 </div>
+                {
+                    userLevel === 'admin' && (
+                        <div className = 'admin-nav link-container'>
+                            <NavLink to = '/admin' className = 'link admin-link'> Admin </NavLink>
+                        </div>
+                    )
+                }
             </div>
         </Cnav>
     )
 }
 
 export default connect(st => ({
-    userData: st.userData
+    userData: st.userData,
+    userLevel: st.userLevel
 }),{
     logoutUserTwitch: authActions.logoutUserTwitch,
     getStripeId: userActions.getStripeId,

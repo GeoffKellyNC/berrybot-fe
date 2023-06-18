@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
+import Admin from './views/Admin';
 import ControlPanel from './views/ControlPanel';
 import Home from './views/Home';
 import PricingPage from './views/pricing/PricingPage';
@@ -8,6 +9,7 @@ import Redirect from './views/Redirect';
 import RedicrectYT from './views/RedirectYT';
 import Success from './views/pricing/Success';
 
+import AdminRoute from './util/AdminRoute';
 import ProtectedRoutes from './util/ProtectedRoutes';
 
 function App() {
@@ -23,6 +25,11 @@ function App() {
           <ProtectedRoutes>
             <ControlPanel />
           </ProtectedRoutes>
+        } />
+        <Route path="/admin" element={
+          <AdminRoute>
+            <Admin />
+          </AdminRoute>
         } />
       </Routes>
     </div>

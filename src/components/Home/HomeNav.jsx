@@ -20,8 +20,8 @@ const HomeNav = () => {
                 <img src= {berryLogo} alt="logo" className = 'logo-nav'/>
                 <div className = 'nav-links'>
                     <NavLink to = '/pricing'> Pricing </NavLink>
-                    <NavLink to = '/about'> About </NavLink>
-                    <NavLink to = '/contact'> Contact </NavLink>
+                    <NavLink  to = '/'> About </NavLink>
+                    <NavLink to = '/'> Contact </NavLink>
                 </div>
             </div>
         </Nav>
@@ -71,11 +71,11 @@ const Nav = styled.div`
         border-radius: 5px;
     }
 
-    .nav-links a.active {
-        color: ${pr => pr.theme.colors.primary};
-        background-color: ${pr => pr.theme.font.colors.primary};
-        border-radius: 5px;
-    }
+    // .nav-links a.active {
+    //     color: ${pr => pr.theme.colors.primary};
+    //     background-color: ${pr => pr.theme.font.colors.primary};
+    //     border-radius: 5px;
+    // }
 
 
 

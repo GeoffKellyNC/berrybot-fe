@@ -18,3 +18,13 @@ export function isVerifying(state = false, action){
             return state
     }
 }
+
+
+export function userLevel (state = null, action){
+    switch(action.type){
+        case authTypes.SET_USER_LEVEL:
+            return action.payload
+        default:
+            return state
+    }
+}
