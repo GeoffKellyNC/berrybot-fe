@@ -57,6 +57,7 @@ const AiSettings = ({
     <AiSettingWrapper>
     <div className="ai-settings-title">
         <span> Ai Moderation </span>
+        <span className = 'subtitle'>Lower sensitivty = Stricter Moderation</span>
       </div>
       {
         changes ? (
@@ -117,6 +118,16 @@ const AiSettingWrapper = styled.div`
         padding: 10px;
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+    }
+
+    .subtitle {
+        font-size: ${(pr) => pr.theme.font.size.medium};
+        color: ${(pr) => pr.theme.colors.berry};
+        margin-left: 10px;
+        margin-top: 5px;
     }
 
 `

@@ -64,7 +64,7 @@ const GPTChat = ({ userData }) => {
         </div>
         <div className = 'chat-input'>
             <Input
-                placeholder="Type a message..."
+                placeholder="Ask about your chat... What has my chat been talking about?"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onPressEnter={sendMessage}

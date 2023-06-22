@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import RunAd from './RunAd'
 import StartPoll from './StartPoll'
 import CreateClip from './CreateClip'
+import ScheduledActions from './ScheduledActions'
 
 
 
@@ -19,6 +20,7 @@ const QuickActions = () => {
             <RunAd />
             <StartPoll />
             <CreateClip />
+            <ScheduledActions />
         </Qa>
     )
 }

@@ -10,7 +10,7 @@ const TwitchChatSettings = ({
     tcs,
     updateTwitchChatSetting
 }) => {
-    const [disabled, setDisabled] = useState(false)
+    const [disabled, setDisabled] = useState(true)
     const dispatch = useDispatch()
 
 const handleSwitch = async (e, modifier) => {

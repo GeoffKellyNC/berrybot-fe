@@ -3,6 +3,7 @@ import { connect, useDispatch } from 'react-redux';
 import * as twitchActions from '../store/twitch/twitch.actions'
 import * as authActions from '../store/auth/auth.actions'
 import * as musicActions from '../store/music/music.actions'
+import * as userActions from '../store/user/user.actions'
 import * as authTypes from '../store/auth/auth.types'
 import * as notifyTypes from '../store/notify/notify.types'
 import styled from 'styled-components'
@@ -27,7 +28,8 @@ const ControlPanel = ({
     userData,
     verifyUserTwitchAccessToken,
     getTwitchChatSettings,
-    getMusicData
+    getMusicData,
+    getScheduledMessages
 }) => {
 
     const dispatch = useDispatch()
@@ -63,6 +65,7 @@ const ControlPanel = ({
         await getCurrentStreamData()
         await getTwitchChatSettings()
         await getMusicData()
+        await getScheduledMessages()
         dispatch({
             type: authTypes.SET_USER_LEVEL,
             payload: userData.account_type
@@ -121,7 +124,8 @@ export default connect(st => ({
     verifyUserTwitchAccessToken: authActions.verifyUserTwitchAccessToken,
     getCurrentStreamData: twitchActions.getCurrentStreamData,
     getTwitchChatSettings: twitchActions.getTwitchChatSettings,
-    getMusicData: musicActions.getMusicData
+    getMusicData: musicActions.getMusicData,
+    getScheduledMessages: userActions.getScheduledMessages
 }) (ControlPanel)
 
 

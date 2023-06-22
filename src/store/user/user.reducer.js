@@ -11,3 +11,15 @@ export function userData(state = null, action){
     }
 }
 
+export function scheduledMessages(state = [], action){
+    switch(action.type){
+        case userTypes.GET_SCHEDULED_MESSAGES:
+            return action.payload;
+        case userTypes.SET_SCHEDULED_MESSAGES:
+            return [...state, action.payload]
+        case userTypes.DELETE_SCHEDULED_MESSAGE:
+            return state.filter(command => command.sid !== action.payload)
+        default:
+            return state
+    }
+}
