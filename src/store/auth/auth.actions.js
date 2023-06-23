@@ -199,3 +199,52 @@ export const sendYTAuthCode = (code) => async dispatch => {
     }
 
 }
+
+export const setStripeSession = (unx_id, session_id) => async dispatch => {
+    try {
+        console.log("SETTING STRIPE SESSION: ", session_id)
+        const stripeRes = await axios.post(`${BASE_URL}/twitch/stripe-session`, 
+        { session_id, unx_id })
+
+        console.log("STRIPE RES: ", stripeRes.data) //! DEBUG
+
+    } catch (error) {
+        console.log('THERE WAS AN ERROR: ', error.message)
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: "There was an error setting stripe session " + error 
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 3000)
+    }
+}
+
+export const getStripeSession = () => async dispatch => {
+    try {
+        console.log("GETTING STRIPE SESSION: ")
+        const stripeRes = await axiosWithAuth().get(`${BASE_URL}/twitch/stripe-session`)
+
+        console.log("STRIPE RES: ", stripeRes.data) //! DEBUG
+
+        return stripeRes.data
+
+    } catch (error) {
+        console.log('THERE WAS AN ERROR: ', error.message)
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: "There was an error getting stripe session " + error 
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 3000)
+    }
+}

@@ -15,7 +15,8 @@ const ControlNav = ({
     logoutUserTwitch,
     getStripeId,
     sendCusPortal,
-    userLevel
+    userLevel,
+    getStripeSession
 }) => {
     const [stripeId, setStripeId] = useState(null)
 
@@ -25,10 +26,11 @@ const ControlNav = ({
     }
 
     const setUp = useCallback(async () => {
-        const id = await getStripeId(userData.twitch_login)
+        const id = await getStripeSession()
+        console.log('STRIP ID', id) //!DEBUG
         setStripeId(id)
         return
-    }, [getStripeId, userData.twitch_login])
+    }, [getStripeSession])
 
     useEffect(() => {
         setUp()
@@ -80,7 +82,8 @@ export default connect(st => ({
 }),{
     logoutUserTwitch: authActions.logoutUserTwitch,
     getStripeId: userActions.getStripeId,
-    sendCusPortal: userActions.sendCusPortal
+    sendCusPortal: userActions.sendCusPortal,
+    getStripeSession: authActions.getStripeSession
 }) (ControlNav)
 
 

@@ -39,7 +39,11 @@ export const getStripeId = (twitch_login) => async dispatch => {
 
 export const sendCusPortal = (stripeId) => async dispatch => {
     try {
-        await axiosWithAuth().post(`${BASE_URL}/payments/customer-portal?session_id=${stripeId}`)
+       const url =  await axiosWithAuth().post(`${BASE_URL}/payments/customer-portal/${stripeId}`)
+
+       if(url.data.length < 1) return
+       
+       window.location.href = url.data
 
         return
 
@@ -341,4 +345,5 @@ export const deleteCustomCommand = (commandId) => async dispatch => {
         , 5000)
     }
 }
+
 

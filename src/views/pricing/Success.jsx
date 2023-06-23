@@ -2,10 +2,10 @@ import React, { useEffect, useCallback } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-// import * as userActions from '../../store/user/user.actions'
-
+import * as authActions from '../../store/auth/auth.actions'
 const Success = ({
   userData,
+  setStripeSession
 }) => {
 
   const nav = useNavigate()
@@ -21,9 +21,10 @@ const Success = ({
     const sessionId = urlParams.get('session_id')
 
     if (success && sessionId) {
+      await setStripeSession(userData.unx_id, sessionId)
       return
     }
-  }, [urlParams])
+  }, [setStripeSession, urlParams, userData.unx_id])
 
   useEffect(() => {
     handleSuccess()
@@ -45,6 +46,7 @@ const Success = ({
 export default connect(st => ({
   userData: st.userData
 }),{
+  setStripeSession: authActions.setStripeSession
 }) (Success)
 
 const SuccessStyled = styled.div`
