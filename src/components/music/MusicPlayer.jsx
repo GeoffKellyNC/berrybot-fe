@@ -50,7 +50,7 @@ export default connect(st => ({
 const MusicPlayerStyled = styled.div`
 
   .music-player-placeholder {
-          height: 250px;
+          height: 315px;
           width: 500px;
           display: flex;
           justify-content: center;

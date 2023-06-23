@@ -189,3 +189,156 @@ export const deleteScheduledMessage = (commandId) => async dispatch => {
         , 5000)
     }
 }
+
+export const getCustomCommands = () => async dispatch => {
+    try {
+        const res = await axiosWithAuth().get(`${BASE_URL}/twitch/twitch-chat-commands`)
+
+
+        console.log('Get Custom Commands: ', res.data) //!DEBUG
+
+        if(res.status !== 200){
+            dispatch({
+                type: notifyTypes.SET_ERROR_NOTIFICATION,
+                payload: 'Error getting custom commands'
+            })
+
+            setTimeout(() => {
+                dispatch({
+                    type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+                })
+            }
+            , 5000)
+
+            return
+        }
+
+        dispatch({
+            type: userTypes.GET_USER_COMMANDS,
+            payload: res.data
+        })
+
+        return
+
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: 'Error getting custom commands'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 5000)
+    }
+}
+
+export const setCustomCommand = (commandObj) => async dispatch => {
+    try {
+        const res = await axiosWithAuth().post(`${BASE_URL}/twitch/twitch-chat-commands`, commandObj)
+
+        console.log(res.data)
+
+        if(res.status !== 200){
+            dispatch({
+                type: notifyTypes.SET_ERROR_NOTIFICATION,
+                payload: 'Error setting custom command'
+            })
+
+            setTimeout(() => {
+                dispatch({
+                    type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+                })
+            }
+            , 5000)
+
+            return
+        }
+
+        dispatch({
+            type: userTypes.SET_USER_COMMANDS,
+            payload: commandObj
+        })
+
+        dispatch({
+            type: notifyTypes.SET_APP_NOTIFICATION,
+            payload: 'Custom command set!'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_APP_NOTIFICATION
+            })
+        }
+        , 5000)
+
+        return
+
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: 'Error setting custom command'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 5000)
+    }
+}
+
+export const deleteCustomCommand = (commandId) => async dispatch => {
+    try {
+        const res = await axiosWithAuth().delete(`${BASE_URL}/twitch/twitch-chat-commands/${commandId}`)
+
+        if(res.status !== 200){
+            dispatch({
+                type: notifyTypes.SET_ERROR_NOTIFICATION,
+                payload: 'Error deleting custom command'
+            })
+
+            setTimeout(() => {
+                dispatch({
+                    type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+                })
+            }
+            , 5000)
+
+            return
+        }
+
+        dispatch({
+            type: userTypes.DELETE_USER_COMMAND,
+            payload: commandId
+        })
+
+        dispatch({
+            type: notifyTypes.SET_APP_NOTIFICATION,
+            payload: 'Custom command deleted!'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_APP_NOTIFICATION
+            })
+        }
+        , 5000)
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: 'Error deleting custom command'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+        , 5000)
+    }
+}
+

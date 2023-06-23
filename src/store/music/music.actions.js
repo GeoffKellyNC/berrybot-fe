@@ -51,3 +51,14 @@ export const addSong = (songObj) => async dispatch => {
         }, 5000)
     }
 }
+
+export const setCurrentSong = (songLink) => async dispatch => {
+    dispatch({
+        type: musicTypes.SET_CURRENT_SONG_PLAYING,
+        payload: songLink
+    })
+
+    return
+}
+
+

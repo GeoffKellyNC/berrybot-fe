@@ -5,6 +5,7 @@ import RunAd from './RunAd'
 import StartPoll from './StartPoll'
 import CreateClip from './CreateClip'
 import ScheduledActions from './ScheduledActions'
+import CustomCommands from './CustomCommands'
 
 
 
@@ -21,6 +22,7 @@ const QuickActions = () => {
             <StartPoll />
             <CreateClip />
             <ScheduledActions />
+            <CustomCommands />
         </Qa>
     )
 }

@@ -23,3 +23,18 @@ export function scheduledMessages(state = [], action){
             return state
     }
 }
+
+export function customCommands(state = [], action){
+    switch(action.type){
+        case userTypes.GET_USER_COMMANDS:
+            return action.payload;
+        case userTypes.SET_USER_COMMANDS:
+            return [...state, action.payload]
+        case userTypes.ADD_USER_COMMAND:
+            return [...state, action.payload]
+        case userTypes.DELETE_USER_COMMAND:
+            return state.filter(command => command.cid !== action.payload)
+        default:
+            return state
+    }
+}

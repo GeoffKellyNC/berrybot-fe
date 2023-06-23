@@ -5,6 +5,7 @@ import { appNotification } from "./notify/notify.reducer";
 import { criticalNotification } from "./notify/notify.reducer";
 import { currentSongPlaying } from "./music/music.reducer";
 import { currentStreamData } from "./twitch/twitch.reducer";
+import { customCommands } from "./user/user.reducer";
 import { isAuthenticated } from "./auth/auth.reducer";
 import { isVerifying } from "./auth/auth.reducer";
 import { music } from "./music/music.reducer";
@@ -22,6 +23,7 @@ export default combineReducers({
     criticalNotification,
     currentSongPlaying,
     currentStreamData,
+    customCommands,
     isAuthenticated,
     isVerifying,
     music,

@@ -29,7 +29,8 @@ const ControlPanel = ({
     verifyUserTwitchAccessToken,
     getTwitchChatSettings,
     getMusicData,
-    getScheduledMessages
+    getScheduledMessages,
+    getCustomCommands
 }) => {
 
     const dispatch = useDispatch()
@@ -66,6 +67,7 @@ const ControlPanel = ({
         await getTwitchChatSettings()
         await getMusicData()
         await getScheduledMessages()
+        await getCustomCommands()
         dispatch({
             type: authTypes.SET_USER_LEVEL,
             payload: userData.account_type
@@ -125,7 +127,8 @@ export default connect(st => ({
     getCurrentStreamData: twitchActions.getCurrentStreamData,
     getTwitchChatSettings: twitchActions.getTwitchChatSettings,
     getMusicData: musicActions.getMusicData,
-    getScheduledMessages: userActions.getScheduledMessages
+    getScheduledMessages: userActions.getScheduledMessages,
+    getCustomCommands: userActions.getCustomCommands
 }) (ControlPanel)
 
 
