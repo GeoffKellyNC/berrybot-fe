@@ -78,6 +78,7 @@ const CustomCommands = ({
         open={modalVisible}
         title = 'Custom Commands'
         onCancel = {() => setModalVisible(!modalVisible)}
+        width = {1000}
         footer = {[
           <Button
             onClick={() => setAddNew(!addNew)}
@@ -108,6 +109,7 @@ const CustomCommands = ({
         {
           addNew &&
           <form>
+            <h3>Add New Command</h3>
             <Input
               name='name'
               placeholder='Command Name.. ex: Greeting'
@@ -150,6 +152,7 @@ const GradientModal = styled(Modal)`
     border-radius: 20px;
     border: none;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    overflow-y: scroll;
   }
 
   .ant-modal-close-x {
@@ -183,5 +186,21 @@ const GradientModal = styled(Modal)`
   .ant-modal-confirm-content {
     font-size: 16px;
     font-weight: normal;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  h3 {
+    margin: 10px 0;
   }
 `;

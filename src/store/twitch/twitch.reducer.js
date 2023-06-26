@@ -1,10 +1,10 @@
-import * as tiwtchTypes from './twitch.types';
+import * as twitchTypes from './twitch.types';
 
 
 
 export const currentStreamData = (state = null, action) => {
     switch (action.type) {
-        case tiwtchTypes.SET_CURRENT_STREAM_DATA:
+        case twitchTypes.SET_CURRENT_STREAM_DATA:
             return action.payload;
         default:
             return state;
@@ -13,7 +13,7 @@ export const currentStreamData = (state = null, action) => {
 
 export const addRunning = (state = false, action) => {
     switch (action.type) {
-        case tiwtchTypes.SET_ADD_RUNNING:
+        case twitchTypes.SET_ADD_RUNNING:
             return action.payload;
         default:
             return state;
@@ -22,11 +22,20 @@ export const addRunning = (state = false, action) => {
 
 export const twitchChatSettings = (state = null, action) => {
     switch (action.type) {
-        case tiwtchTypes.SET_TWITCH_CHAT_SETTINGS:
+        case twitchTypes.SET_TWITCH_CHAT_SETTINGS:
             return action.payload;
-        case tiwtchTypes.UPDATE_TWITCH_CHAT_SETTINGS:
+        case twitchTypes.UPDATE_TWITCH_CHAT_SETTINGS:
             return action.payload;
         default:
             return state;
+    }
+}
+
+export function twitchChatLog (state = [], action){
+    switch(action.type){
+        case twitchTypes.SET_TWITCH_LOG:
+            return action.payload
+        default:
+            return state
     }
 }

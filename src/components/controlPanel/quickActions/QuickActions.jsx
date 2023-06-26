@@ -6,6 +6,7 @@ import StartPoll from './StartPoll'
 import CreateClip from './CreateClip'
 import ScheduledActions from './ScheduledActions'
 import CustomCommands from './CustomCommands'
+import LogsButton from './LogsButton'
 import { Modal } from 'antd'
 
 import { TbHelpTriangleFilled } from 'react-icons/tb'
@@ -47,7 +48,7 @@ const QuickActions = () => {
             <CreateClip />
             <ScheduledActions />
             <CustomCommands />
-            <CustomCommands />
+            <LogsButton />
             <StyledModal
                 title = 'Quick Actions HELP'
                 open = {openHelp}

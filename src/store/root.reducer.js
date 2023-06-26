@@ -12,6 +12,7 @@ import { music } from "./music/music.reducer";
 import { nofifyActive } from "./notify/notify.reducer";
 import { pendingMusic } from "./admin/admin.reducer";
 import { scheduledMessages } from "./user/user.reducer";
+import { twitchChatLog } from "./twitch/twitch.reducer";
 import { twitchChatSettings } from "./twitch/twitch.reducer";
 import { userData } from "./user/user.reducer";
 import { userLevel } from "./auth/auth.reducer";
@@ -30,6 +31,7 @@ export default combineReducers({
     nofifyActive,
     pendingMusic,
     scheduledMessages,
+    twitchChatLog,
     twitchChatSettings,
     userData,
     userLevel

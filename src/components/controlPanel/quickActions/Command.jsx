@@ -27,6 +27,7 @@ const CommandStyled = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
     padding: 10px;
     border-bottom: 1px solid ${p => p.theme.colors.primary};
 
@@ -37,7 +38,7 @@ const CommandStyled = styled.div`
     }
 
     p {
-        font-size: ${p => p.theme.font.size.small};
+        font-size: ${p => p.theme.font.size.large};
         color: ${p => p.theme.colors.berry};
     }
 

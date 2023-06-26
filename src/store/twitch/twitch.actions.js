@@ -240,3 +240,31 @@ export const updateUserAiConfig = (aiConfig) => async dispatch => {
         return
     }
 }
+
+export const getTwitchChatLogs = () => async dispatch => {
+    try {
+        const res = await axiosWithAuth().get(`${BASE_URL}/twitch/chat-logs`)
+
+        dispatch({
+            type: twitchTypes.SET_TWITCH_LOG,
+            payload: res.data
+        })
+
+        return
+
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : 'Error getting Twitch Chat Logs'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+        }
+            , 5000)
+
+        return
+    }
+}

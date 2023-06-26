@@ -9,6 +9,7 @@ import PricingPage from './views/pricing/PricingPage';
 import Redirect from './views/Redirect';
 import RedicrectYT from './views/RedirectYT';
 import Success from './views/pricing/Success';
+import ChatLogs from './views/ChatLogs'
 
 import AdminRoute from './util/AdminRoute';
 import ProtectedRoutes from './util/ProtectedRoutes';
@@ -30,6 +31,11 @@ function App() {
         <Route path="/feature-request" element = {
           <ProtectedRoutes>
             <FeatureRequest />
+          </ProtectedRoutes>
+        } />
+        <Route path='/chat-logs' element = {
+          <ProtectedRoutes>
+            <ChatLogs />
           </ProtectedRoutes>
         } />
         <Route path="/admin" element={
