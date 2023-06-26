@@ -32,7 +32,7 @@ const CTA = ({ loginUserYouTube} ) => {
         <div className="col-md-6" id="desc">
           <h1 className="title">Welcome to Berry Bot</h1>
           <p className="description">
-            Berry Bot: Elevate Your Twitch Experience with AI Integration, Advanced Features, and an Exclusive NCS Music Library!
+            Berry Bot: Elevate Your Twitch Experience with AI Integration, Advanced Features, and an Exclusive NCS Music Library! Just $5.99/month!
           </p>
           <div className="login-btn-container">
             <Button 

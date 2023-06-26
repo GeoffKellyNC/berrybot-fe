@@ -117,7 +117,8 @@ const pulse = keyframes`
 `;
 
 const ChatBox = styled.div`
-    width: 550px;
+  
+    min-width: 30rem;
     height: 350px;
     background-color: ${pr => pr.theme.colors.dashboard_background};
     border-radius: 10px;

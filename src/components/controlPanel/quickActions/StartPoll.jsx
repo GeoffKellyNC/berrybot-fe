@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Modal, Input, Space, Select } from 'antd';
+import { Button, Modal, Input, Space, Select, Tooltip } from 'antd';
 import styled from 'styled-components';
 import * as notifyTypes from '../../../store/notify/notify.types'
 import { useDispatch } from 'react-redux';
@@ -120,17 +120,20 @@ const StartPoll = ({
 
   return (
     <> 
-        <Button
-            className='run-poll-btn'
-            type='primary'
-            ghost
-            style={{
-                width: '100px',
-                height: '30px',
-                fontSize: '12px',
-            }}
-            onClick = {showModal}
-        > Start Poll </Button>
+        <Tooltip title='Start A Twitch Poll' color='green'> 
+            <Button
+                className='run-poll-btn'
+                type='primary'
+                ghost
+                style={{
+                    width: '100px',
+                    height: '50px',
+                    fontSize: '15px',
+                    color: 'yellow'
+                }}
+                onClick = {showModal}
+            > Start Poll </Button>
+        </Tooltip>
         <GradientModal
             open={open}
             title="Twitch Poll Options"

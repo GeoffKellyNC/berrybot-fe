@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Tooltip } from 'antd';
+import { FcInfo } from 'react-icons/fc';
 
 const SettingContainer = styled.div`
   width: 80%;
@@ -91,7 +93,14 @@ const Slider = styled.input`
 
 
 
-const SettingItem = ({ name, thresh, punishments, onChange, onSave }) => {
+const SettingItem = ({ 
+  name, 
+  thresh, 
+  punishments, 
+  onChange, 
+  onSave,
+  handleInfoHover,
+  handleInfoColor }) => {
   const [isEditing, setIsEditing] = useState(false);
 
   const convertToPercent = (value) => {
@@ -110,10 +119,19 @@ const SettingItem = ({ name, thresh, punishments, onChange, onSave }) => {
     const handleCancel = () => {
       setIsEditing(false);
     };
+
+
   
     return (
       <SettingContainer>
-        <SettingHeader>{name}</SettingHeader>
+        <SettingHeader>
+          <span>{name} </span>
+          <Tooltip 
+            title = {() => handleInfoHover(name)}
+            color = {handleInfoColor(name)}>
+            <FcInfo />
+          </Tooltip>
+        </SettingHeader>
         {isEditing ? (
           <>
             <SliderContainer>

@@ -13,7 +13,7 @@ export const getCurrentStreamData = () => async dispatch => {
         console.log("Current Stream Data: ", res.data.data)
         dispatch({
             type: twitchTypes.SET_CURRENT_STREAM_DATA,
-            payload: res.data.data > 0 ? res.data.data : null
+            payload: res.data.data.length > 0 ? res.data.data[0] : null
         })
     } catch (err) {
         dispatch({
@@ -67,7 +67,7 @@ export const runTwitchAd = (duration) => async dispatch => {
 
         dispatch({
             type: notifyTypes.SET_APP_NOTIFICATION,
-            payload: adRes.data.message
+            payload: adRes.data.data.message + " " + adRes.data.data.length + " seconds"
         })
 
         setTimeout(() => {
@@ -125,10 +125,10 @@ export const createTwitchClip = () => async dispatch => {
 
         console.log("Clip Response: ", clipRes.data)
 
-        dispatch({
-            type: notifyTypes.SET_APP_NOTIFICATION,
-            payload: clipRes.data.message
-        })
+        // dispatch({
+        //     type: notifyTypes.SET_APP_NOTIFICATION,
+        //     payload: JSON.parse(clipRes.data._body).message ? JSON.parse(clipRes.data._body).message : 'ERROR: Clip not created'
+        // })
 
         setTimeout(() => {
             dispatch({

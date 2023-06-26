@@ -61,7 +61,7 @@ const StreamState = styled.div`
     font-family: ${pr => pr.theme.font.family.primary};
 
     .status-section {
-        width: 20%;
+        width: auto;
         height: 100%;
         display: flex;
         align-items: center;
@@ -70,7 +70,8 @@ const StreamState = styled.div`
     }
 
     .status-text {
-        margin-left: 5px;
+        width: auto;
+        margin: 0px 5px;
         font-size: ${pr => pr.theme.font.size.medium};
         color: ${pr => pr.theme.font.colors.priary};
     }

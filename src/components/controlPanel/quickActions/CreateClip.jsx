@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button } from 'antd'
+import { Button, Tooltip } from 'antd'
 import * as twitchActions from '../../../store/twitch/twitch.actions'
 
 const CreateClip = ({
@@ -13,19 +13,22 @@ const CreateClip = ({
 
   return (
     <>
-        <Button
-            className='create-clip-btn'
-            type='primary'
-            ghost
-            style={{
-                width: '100px',
-                height: '30px',
-                fontSize: '12px',
-            }}
-            onClick={handleCreateClip}
-        >
-            Create Clip
-        </Button>
+        <Tooltip title='Creates a clip and saves to twitch.' color={'volcano'}>
+            <Button
+                className='create-clip-btn'
+                type='primary'
+                ghost
+                style={{
+                    width: 'auto',
+                    height: '50px',
+                    fontSize: '15px',
+                    color: 'yellow'
+                }}
+                onClick={handleCreateClip}
+            >
+                Create Clip
+            </Button>
+        </Tooltip>
     </>
   )
 }

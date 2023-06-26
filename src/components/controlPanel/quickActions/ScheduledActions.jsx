@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import styled from 'styled-components'
-import { Button, Modal, Input, Space }  from 'antd'
+import { Button, Modal, Input, Tooltip }  from 'antd'
 import * as userActions from '../../../store/user/user.actions'
 import * as notifyTypes from '../../../store/notify/notify.types'
 
@@ -67,17 +67,20 @@ const ScheduledActions = ({
 
   return (
     <>
-        <Button
-            className='run-poll-btn'
-            type='primary'
-            ghost
-            style={{
+        <Tooltip title='Run Scheduled Messages in chat' color = 'magenta' placement='bottom'>
+          <Button
+              className='run-poll-btn'
+              type='primary'
+              ghost
+              style={{
                 width: 'auto',
-                height: '30px',
-                fontSize: '12px',
-            }}
-            onClick = {() => setVisible(!visible)}
-        > Scheduled Commands </Button>
+                height: '50px',
+                fontSize: '15px',
+                color: 'yellow'
+              }}
+              onClick = {() => setVisible(!visible)}
+          > Schedules </Button>
+        </Tooltip>
         <GradientModal
             open={visible}
             title = 'Scheduled Commands'

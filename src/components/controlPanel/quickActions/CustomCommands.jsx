@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import * as userActions from '../../../store/user/user.actions'
-import { Input, Button, Modal } from 'antd';
+import { Input, Button, Modal, Tooltip } from 'antd';
 
 
 import Command from './Command'
@@ -58,19 +58,22 @@ const CustomCommands = ({
 
   return (
     <>
-      <Button
-        className = 'customCommands'
-        type='primary'
-        ghost
-        style={{
-          width: 'auto',
-          height: '30px',
-          fontSize: '12px',
-        }}
-        onClick={() => setModalVisible(!modalVisible)}
-      >
-        Custom Commands
-      </Button>
+      <Tooltip title='Custom Commands for your chat.' color = 'purple' placement='bottom'>
+        <Button
+          className = 'customCommands'
+          type='primary'
+          ghost
+          style={{
+            width: 'auto',
+            height: '50px',
+            fontSize: '15px',
+            color: 'yellow'
+          }}
+          onClick={() => setModalVisible(!modalVisible)}
+        >
+          Commands
+        </Button>
+      </Tooltip>
       <GradientModal
         open={modalVisible}
         title = 'Custom Commands'

@@ -19,9 +19,8 @@ const HomeNav = () => {
             <div className='nav-left'>
                 <img src= {berryLogo} alt="logo" className = 'logo-nav'/>
                 <div className = 'nav-links'>
-                    <NavLink to = '/pricing'> Pricing </NavLink>
-                    <NavLink  to = '/'> About </NavLink>
-                    <NavLink to = '/'> Contact </NavLink>
+                    {/* <NavLink  to = '/'> About </NavLink>
+                    <NavLink to = '/'> Contact </NavLink> */}
                 </div>
             </div>
         </Nav>
@@ -58,7 +57,7 @@ const Nav = styled.div`
     .nav-links a {
         color: ${pr => pr.theme.font.colors.primary};
         text-decoration: none;
-        font-size: 1.5rem;
+        font-size: 1rem;
         font-weight: 100;
         font-family: ${pr => pr.theme.font.family.secondary};
         padding: 1rem 2rem;

@@ -48,9 +48,9 @@ const ControlNav = ({
             <span className = 'user-name'>{userData.twitch_display}</span>
             </div>
             <div className='right-nav '>
-                <div className="help-nav link-container">
+                {/* <div className="help-nav link-container">
                     <span className='link help-link'>Help</span>
-                </div>
+                </div> */}
                 <div className="logout-nav link-container">
                     <span
                     onClick = {() => logoutUserTwitch(userData.twitch_login)}
@@ -62,7 +62,7 @@ const ControlNav = ({
                         className='link billing-link'>Billing</span>
                 </div>
                 <div className = 'feature-req-nav link-container'>
-                    <NavLink to = '/feature-requests' className = 'link feature-req-link'> Requests </NavLink>
+                    <NavLink to = '/feature-request' className = 'link feature-req-link'> Requests </NavLink>
                 </div>
                 {
                     userLevel === 'admin' && (

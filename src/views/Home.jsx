@@ -8,6 +8,7 @@ import AboutHome from '../components/Home/AboutHome'
 import HomeNav from '../components/Home/HomeNav'
 import HomeMovileNave from '../components/Home/HomeMobileNav'
 import CTA from '../components/Home/Cta'
+import BetaWarningPopUp from '../components/Home/BetaWarn'
 
 
 
@@ -31,6 +32,7 @@ const HomePage = ({
             }
             <CTA loginUserYouTube = { loginUserYouTube } />
             <AboutHome />
+            <BetaWarningPopUp />
         </Home>
     )
 }

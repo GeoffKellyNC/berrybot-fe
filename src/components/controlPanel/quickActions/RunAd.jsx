@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Button, Modal, Select } from 'antd';
+import { Button, Modal, Select, Tooltip } from 'antd';
 
 import * as twitchActions from '../../../store/twitch/twitch.actions';
+import { fontFamily } from '@mui/system';
 
 const GradientModal = styled(Modal)`
   .ant-modal-content {
@@ -15,6 +16,9 @@ const GradientModal = styled(Modal)`
     background: linear-gradient(to right, #006fff, #5a51cc, #66359c, #601b6f, #500347);
     }
 `;
+
+
+
 
 const RunAd = ({ userData, runTwitchAd }) => {
   const [loading, setLoading] = useState(false);
@@ -44,21 +48,40 @@ const RunAd = ({ userData, runTwitchAd }) => {
     setAdLength(e);
   };
 
+  const content = (
+    <div className="ad-help help">
+      <p
+        className="help-text"
+        style={{
+          color: 'white',
+        }}
+      >
+        You must be an affiliate or partner to use this feature
+      </p>
+    </div>
+)
+
   return (
     <>
-      <Button
-        className='run-ad-btn'
-        type='primary'
-        ghost
-        style={{
-          width: '100px',
-          height: '30px',
-          fontSize: '12px',
-        }}
-        onClick={showModal}
-      >
-        Run Ad
-      </Button>
+      <Tooltip
+        title = 'Click to Run Twitch Ad'
+        color = 'cyan'
+       >
+        <Button
+          className='run-ad-btn'
+          type='primary'
+          ghost
+          style={{
+            width: '100px',
+            height: '50px',
+            fontSize: '15px',
+            color: 'yellow'
+          }}
+          onClick={showModal}
+        >
+          Run Ad
+        </Button>
+      </Tooltip>
       <GradientModal
         open={open}
         title='Select Ad Length'

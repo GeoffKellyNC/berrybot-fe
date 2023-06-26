@@ -42,7 +42,7 @@ export const sendCusPortal = (stripeId) => async dispatch => {
        const url =  await axiosWithAuth().post(`${BASE_URL}/payments/customer-portal/${stripeId}`)
 
        if(url.data.length < 1) return
-       
+
        window.location.href = url.data
 
         return
@@ -343,6 +343,18 @@ export const deleteCustomCommand = (commandId) => async dispatch => {
             })
         }
         , 5000)
+    }
+}
+
+export const sendFeatureRequest = (featureObj) => async dispatch => {
+    try {
+        const featRes = await axiosWithAuth().post(`${BASE_URL}/twitch/feature-requests`, {data: featureObj})
+
+        console.log('FEAT RES: ',featRes.data)
+    } catch (error) {
+        console.log("🚀 ~ file: userState.actions.js:100 ~ sendFeatureRequest ~ error:", error)
+        return
+        
     }
 }
 

@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import Admin from './views/Admin';
 import ControlPanel from './views/ControlPanel';
+import FeatureRequest from './views/FeatureRequest';
 import Home from './views/Home';
 import PricingPage from './views/pricing/PricingPage';
 import Redirect from './views/Redirect';
@@ -24,6 +25,11 @@ function App() {
         <Route path="/control-panel" element={
           <ProtectedRoutes>
             <ControlPanel />
+          </ProtectedRoutes>
+        } />
+        <Route path="/feature-request" element = {
+          <ProtectedRoutes>
+            <FeatureRequest />
           </ProtectedRoutes>
         } />
         <Route path="/admin" element={

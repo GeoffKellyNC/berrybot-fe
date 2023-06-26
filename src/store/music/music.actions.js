@@ -52,10 +52,18 @@ export const addSong = (songObj) => async dispatch => {
     }
 }
 
-export const setCurrentSong = (songLink) => async dispatch => {
+export const setCurrentSong = (songLink, songName) => async dispatch => {
+
+    console.log('SETTING CURRENT SONG')
+
     dispatch({
         type: musicTypes.SET_CURRENT_SONG_PLAYING,
         payload: songLink
+    })
+
+    dispatch({
+        type: notifyTypes.SET_APP_NOTIFICATION,
+        payload: `Now playing: ${songName}`
     })
 
     return
