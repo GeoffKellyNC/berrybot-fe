@@ -63,7 +63,7 @@ const FeatureRequest = ({
           />
         </FormGroup>
         <Button type="submit">Submit</Button>
-        <CancelButton onClick = {() => nav('/dashboard')}>Cancel</CancelButton>
+        <CancelButton onClick = {() => nav('/control-panel')}>Cancel</CancelButton>
       </Form>
     </Container>
   );
