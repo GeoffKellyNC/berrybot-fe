@@ -42,7 +42,7 @@ const Music = ({
         </Button>
       </div>
       <MusicPlayer />
-      <Modal
+      <GradientModal
         title='Music Selection'
         visible={openMusic}
         onOk={onCancel}
@@ -73,7 +73,7 @@ const Music = ({
           )
         }
       </SongsContainer>
-      </Modal>
+      </GradientModal>
     </MusicContainer>
   )
 }
@@ -84,6 +84,19 @@ export default connect(st => ({
 }),{
   setCurrentSong: musicActions.setCurrentSong
 })(Music)
+
+const GradientModal = styled(Modal)`
+  .ant-modal-content {
+    background: linear-gradient(to right,#192531, #101f31, #091931, #081130, #0d042d);
+  }
+
+  .ant-modal-title {
+    color: white;
+    background: linear-gradient(to right, #192531, #101f31, #091931, #081130, #0d042d);
+    }
+
+
+`;
 
 
 const MusicContainer = styled.div`

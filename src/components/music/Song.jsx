@@ -29,9 +29,8 @@ export default Song
 
 
 const StyledSong = styled.div`
-    width: 300px;
+    width: 400px;
     height: 100px;
-    border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -39,7 +38,7 @@ const StyledSong = styled.div`
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 10px;
-    background-color: ${pr => pr.theme.colors.primary};
+    background-color: #1E1345;
     color: ${pr => pr.theme.font.colors.primary};
 
     .song-header {

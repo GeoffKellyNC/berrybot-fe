@@ -157,7 +157,7 @@ const AiSettings = ({
     width = {'1000px'}
   >
     <div className = 'help-content'>
-      <p>Berry Bot is capable of moderating your chat on its own. These setting control how strict your soft you want berry to be. The lower the sensitity the stricter the bot will be. Each category can be changed individually to adjust to your stream. If the threshold is met then a player will be timed out or banned depending on what you set. </p>
+      <p>Berry Bot is capable of moderating your chat on its own. These setting control how strict or lenient you want berry to be. The lower the sensitity the stricter the bot will be. Each category can be changed individually to adjust to your stream. If the threshold is met then a player will be timed out or banned depending on what you set. </p>
     </div>
   </Modal>
 </AiSettingWrapper>

@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { connect } from 'react-redux';
 import webChatApi from '../../util/api/webChatApi'
+import Ai2Anime from '../animations/Ai2Anime';
 
-import { Input, Button } from 'antd';
+import { Input, Button, message } from 'antd';
 
 const GPTChat = ({ userData }) => {
   const [messages, setMessages] = useState([]);
@@ -43,6 +44,11 @@ const GPTChat = ({ userData }) => {
 
   return (
     <ChatBox>
+        {
+          messages.length === 0 && (
+            <Ai2Anime />
+          )
+        }
         <div className = 'webchat-title'>
             <span className = 'title-text'> AI Analytics Chat </span>
         </div>
@@ -117,7 +123,7 @@ const pulse = keyframes`
 `;
 
 const ChatBox = styled.div`
-  
+    position: relative;
     min-width: 30rem;
     height: 350px;
     background-color: ${pr => pr.theme.colors.dashboard_background};
@@ -209,7 +215,7 @@ const Message = styled.div`
       ? 'linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)'
       : 'linear-gradient(135deg, #f6d365 0%, #fda085 100%)'};
   text-align: ${({ sender }) => (sender === 'user' ? 'left' : 'left')};
-
+  z-index: 999999;
   .message-text {
     word-wrap: break-word;
   }
