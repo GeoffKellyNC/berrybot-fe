@@ -268,3 +268,47 @@ export const getTwitchChatLogs = () => async dispatch => {
         return
     }
 }
+
+export const getTwitchMods = () => async dispatch => {
+    try {
+        const res = await axiosWithAuth().get(`${BASE_URL}/twitch/twitch-mods`)
+
+        console.log('MODS: ', res.data) //!DEBUG
+
+        dispatch({
+            type: twitchTypes.SET_TWITCH_MODS,
+            payload: res.data
+        })
+
+        let isMod
+
+        res.data.forEach(mod => {
+            if(mod.user_login === 'xberrybot'){
+                isMod = true
+            }
+        })
+
+        if(!isMod){
+            dispatch({
+                type: notifyTypes.SET_ERROR_NOTIFICATION,
+                payload: 'XberryBot is not a mod in your channel. Please mod XberryBot to use the Twitch Chat features'
+            })
+
+            setInterval(() => {
+                dispatch({
+                    type: notifyTypes.SET_ERROR_NOTIFICATION,
+                    payload: 'XberryBot is not a mod in your channel. Please mod XberryBot to use the Twitch Chat features'
+                })
+            }, 8000)
+
+        }
+
+        return
+        
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : 'Error getting Twitch Mods'
+        })
+    }
+}

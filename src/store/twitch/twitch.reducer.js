@@ -39,3 +39,12 @@ export function twitchChatLog (state = [], action){
             return state
     }
 }
+
+export function twitchMods (state = null, action){
+    switch(action.type){
+        case twitchTypes.SET_TWITCH_MODS:
+            return action.payload
+        default: 
+            return state
+    }
+}
