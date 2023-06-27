@@ -11,13 +11,8 @@ const BASE_URL = process.env.REACT_APP_PROD_BASE_URL
 
 export const getStripeId = (twitch_login) => async dispatch => {
     try {
-
-        console.log('Twitch Login: ', twitch_login) 
         
         const res = await axiosWithAuth().post(`${BASE_URL}/twitch/get-stripe-id`, { twitch_login })
-
-
-        console.log("Stripe ID: ", res.data)
 
         return res.data
 
@@ -48,7 +43,18 @@ export const sendCusPortal = (stripeId) => async dispatch => {
         return
 
     } catch (error) {
-        console.log(error)
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.message ? error.message : 'Error sending customer portal'
+        })
+
+        setTimeout(() => {
+            dispatch({
+                type: notifyTypes.CLEAR_ERROR_NOTIFICATION
+            })
+
+        }, 5000)
+
         return
     }
 }
@@ -57,7 +63,6 @@ export const getScheduledMessages = () => async dispatch => {
     try{
         const res = await axiosWithAuth().get(`${BASE_URL}/twitch/scheduled-commands`)
 
-        console.log(res.data)
 
         dispatch({
             type: userTypes.GET_SCHEDULED_MESSAGES,
@@ -80,7 +85,6 @@ export const getScheduledMessages = () => async dispatch => {
 
         }, 5000)
 
-        console.log(error)
         return
     }
 
@@ -89,8 +93,6 @@ export const getScheduledMessages = () => async dispatch => {
 export const setScheduledMessage = (commandObj) => async dispatch => {
     try {
         const res = await axiosWithAuth().post(`${BASE_URL}/twitch/scheduled-commands`, commandObj)
-
-        console.log('Set Scheduled Message: ', res) //!DEBUG
 
         if(res.status !== 200){
             dispatch({
@@ -198,9 +200,6 @@ export const getCustomCommands = () => async dispatch => {
     try {
         const res = await axiosWithAuth().get(`${BASE_URL}/twitch/twitch-chat-commands`)
 
-
-        console.log('Get Custom Commands: ', res.data) //!DEBUG
-
         if(res.status !== 200){
             dispatch({
                 type: notifyTypes.SET_ERROR_NOTIFICATION,
@@ -242,8 +241,6 @@ export const getCustomCommands = () => async dispatch => {
 export const setCustomCommand = (commandObj) => async dispatch => {
     try {
         const res = await axiosWithAuth().post(`${BASE_URL}/twitch/twitch-chat-commands`, commandObj)
-
-        console.log(res.data)
 
         if(res.status !== 200){
             dispatch({
@@ -350,9 +347,7 @@ export const sendFeatureRequest = (featureObj) => async dispatch => {
     try {
         const featRes = await axiosWithAuth().post(`${BASE_URL}/twitch/feature-requests`, {data: featureObj})
 
-        console.log('FEAT RES: ',featRes.data)
     } catch (error) {
-        console.log("🚀 ~ file: userState.actions.js:100 ~ sendFeatureRequest ~ error:", error)
         return
         
     }

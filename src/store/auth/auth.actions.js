@@ -9,7 +9,6 @@ const BASE_URL =  process.env.REACT_APP_PROD_BASE_URL
 
 export const loginUserTwitch = (code) => async dispatch => {
     try {
-        console.log("LOGGING IN!!!!")
         const loginRes = await axios.post(`${BASE_URL}/auth/login`, 
         { code })
         const userData = loginRes.data
@@ -49,7 +48,6 @@ export const loginUserTwitch = (code) => async dispatch => {
         return userData.userData.user_paid
 
     } catch (error) {
-        console.log('THERE WAS AN ERROR: ', error.message)
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: "There was an error logging in " + error 
@@ -66,7 +64,6 @@ export const loginUserTwitch = (code) => async dispatch => {
 
 export const logoutUserTwitch = (channel) => async dispatch => {
     try {
-        console.log("LOGGING OUT!!!!")
         await axiosWithAuth().post(`${BASE_URL}/auth/logout`, { channel })
 
 
@@ -80,7 +77,6 @@ export const logoutUserTwitch = (channel) => async dispatch => {
         return true
 
     } catch (error) {
-        console.log('THERE WAS AN ERROR: ', error.message)
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: "There was an error logging out " + error 
@@ -147,17 +143,14 @@ export const verifyUserTwitchAccessToken = () => async dispatch => {
 
 export const loginUserYouTube = () => async dispatch => {
     try {
-        console.log("LOGGING IN YOUTUBE!!!!")
         const loginRes = await axios.get(`${BASE_URL}/youtube/auth/login-youtube`)
 
-        console.log("LOGIN RES YT: ", loginRes.data)
 
         window.location.href = loginRes.data
 
         return
 
     } catch (error) {
-        console.log('THERE WAS AN ERROR: ', error.message)
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: "There was an error logging in " + error 
@@ -174,17 +167,14 @@ export const loginUserYouTube = () => async dispatch => {
 
 export const sendYTAuthCode = (code) => async dispatch => {
     try {
-        console.log("SENDING CODE TO SERVER: ", code)
         const loginYTRes = await axios.post(`${BASE_URL}/youtube/auth/login-youtube`, 
         { code })
 
-        console.log("LOGIN RES YT: ", loginYTRes.data) //! DEBUG
 
 
         return
 
     } catch (error) {
-        console.log('THERE WAS AN ERROR: ', error.message)
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: "There was an error logging in " + error 
@@ -202,14 +192,11 @@ export const sendYTAuthCode = (code) => async dispatch => {
 
 export const setStripeSession = (unx_id, session_id) => async dispatch => {
     try {
-        console.log("SETTING STRIPE SESSION: ", session_id)
         const stripeRes = await axios.post(`${BASE_URL}/twitch/stripe-session`, 
         { session_id, unx_id })
 
-        console.log("STRIPE RES: ", stripeRes.data) //! DEBUG
 
     } catch (error) {
-        console.log('THERE WAS AN ERROR: ', error.message)
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: "There was an error setting stripe session " + error 
@@ -226,15 +213,12 @@ export const setStripeSession = (unx_id, session_id) => async dispatch => {
 
 export const getStripeSession = () => async dispatch => {
     try {
-        console.log("GETTING STRIPE SESSION: ")
         const stripeRes = await axiosWithAuth().get(`${BASE_URL}/twitch/stripe-session`)
 
-        console.log("STRIPE RES: ", stripeRes.data) //! DEBUG
 
         return stripeRes.data
 
     } catch (error) {
-        console.log('THERE WAS AN ERROR: ', error.message)
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: "There was an error getting stripe session " + error 

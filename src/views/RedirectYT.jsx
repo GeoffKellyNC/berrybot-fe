@@ -18,7 +18,6 @@ const RedicrectYT = ({
     const handleRedirect = useCallback(async () => {
         const code = searchParams.get('code');
 
-        console.log("code: ", code);
 
         // await sendYTAuthCode(code);
 

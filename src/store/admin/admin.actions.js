@@ -8,7 +8,6 @@ export const getPendingSongsFromDb = () => async dispatch => {
     try {
         const res = await axiosWithAuth().get(`${BASE_URL}/music/pending-songs`)
 
-        console.log(res.data)
         dispatch({
             type: adminTypes.SET_PENDING_MUSIC,
             payload: res.data
@@ -16,7 +15,6 @@ export const getPendingSongsFromDb = () => async dispatch => {
 
         return
     } catch (error) {
-        console.log('ADMIN ERROR GETTING PENDING SONGS!')
         return
     }
 }
@@ -26,7 +24,6 @@ export const updatePendingSong = (songId, status) => async dispatch => {
         const res = await axiosWithAuth().post(`${BASE_URL}/music/update-song-status`, { songId, status })
 
 
-        console.log(res.data)
 
         if(res.status !== 200){
             return false
@@ -41,7 +38,6 @@ export const updatePendingSong = (songId, status) => async dispatch => {
 
 
     } catch (error) {
-        console.log('ADMIN ERROR UPDATING PENDING SONG!')
         return
     }
 }

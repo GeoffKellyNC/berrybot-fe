@@ -12,7 +12,6 @@ const AppNotifications = ({
     const [api, contextHolder] = notification.useNotification();
 
     const openNotification = () => {
-        console.log('openNotification')
         api.info({
           message: 'Berry Notification',
           description: appNotification.message,

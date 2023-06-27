@@ -97,7 +97,6 @@ const ControlPanel = ({
   
     useEffect(() => {
       handleVerify()
-      console.log(quickActionRef.current)
     }, [handleVerify])
 
     const quickActionRef = useRef(null)

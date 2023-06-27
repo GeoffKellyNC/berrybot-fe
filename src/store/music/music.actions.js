@@ -34,10 +34,8 @@ export const addSong = (songObj) => async dispatch => {
         const musicData = await axiosWithAuth().post(`${BASE_URL}/music/add-song`, { songObj })
 
         if(musicData.status === 200){
-            console.log('SONG SET SUCCESSFULLY')
             return
         }
-        console.log('SONG NOT SET SUCCESSFULLY NO ERROR')
         return
     } catch (error) {
         dispatch({
@@ -54,7 +52,6 @@ export const addSong = (songObj) => async dispatch => {
 
 export const setCurrentSong = (songLink, songName) => async dispatch => {
 
-    console.log('SETTING CURRENT SONG')
 
     dispatch({
         type: musicTypes.SET_CURRENT_SONG_PLAYING,

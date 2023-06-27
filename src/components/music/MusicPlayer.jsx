@@ -19,7 +19,7 @@ const MusicPlayer = ({
                     width='400px'
                     height = '300px'
                     onEnded = {() => {
-                        console.log('ended')
+                        return
                     }}
                     playing = {true}
                     config = {{

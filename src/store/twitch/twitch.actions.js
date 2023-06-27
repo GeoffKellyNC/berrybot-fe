@@ -10,7 +10,6 @@ export const getCurrentStreamData = () => async dispatch => {
     try {
         const res = await axiosWithAuth().post(`${BASE_URL}/twitch/get-current-stream-data`)
 
-        console.log("Current Stream Data: ", res.data.data)
         dispatch({
             type: twitchTypes.SET_CURRENT_STREAM_DATA,
             payload: res.data.data.length > 0 ? res.data.data[0] : null
@@ -36,7 +35,6 @@ export const runTwitchAd = (duration) => async dispatch => {
 
         const adRes = await axiosWithAuth().post(`${BASE_URL}/twitch/run-twitch-ad`, { duration })
 
-        console.log("Ad Response: ", adRes.data)
 
         if (adRes.data.status === 400){
             dispatch({
@@ -81,7 +79,6 @@ export const runTwitchAd = (duration) => async dispatch => {
 
         
     } catch (error) {
-        console.log('Error: ', error) //!DEBUG
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: error.response.data.message ? error.response.data.message : error.response.data.error
@@ -102,7 +99,6 @@ export const runTwitchPoll = (title, duration, pollOptions) => async dispatch =>
     try {
         const pollRes = await axiosWithAuth().post(`${BASE_URL}/twitch/start-twitch-poll`, { title, duration, pollOptions })
 
-        console.log("Poll Response: ", pollRes.data)
         
     } catch (error) {
         dispatch({
@@ -123,7 +119,6 @@ export const createTwitchClip = () => async dispatch => {
     try {
         const clipRes = await axiosWithAuth().post(`${BASE_URL}/twitch/create-twitch-clip`)
 
-        console.log("Clip Response: ", clipRes.data)
 
         // dispatch({
         //     type: notifyTypes.SET_APP_NOTIFICATION,
@@ -222,7 +217,6 @@ export const updateUserAiConfig = (aiConfig) => async dispatch => {
     try {
         const res = await axiosWithAuth().post(`${BASE_URL}/twitch/update-user-ai-settings`, { aiConfig })
 
-        console.log('AI RES: ', res.data) //!DEBUG
         
     } catch (error) {
         dispatch({
@@ -272,8 +266,6 @@ export const getTwitchChatLogs = () => async dispatch => {
 export const getTwitchMods = () => async dispatch => {
     try {
         const res = await axiosWithAuth().get(`${BASE_URL}/twitch/twitch-mods`)
-
-        console.log('MODS: ', res.data) //!DEBUG
 
         dispatch({
             type: twitchTypes.SET_TWITCH_MODS,

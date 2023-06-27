@@ -115,7 +115,6 @@ const StartPoll = ({
 
     // const handleSubmit = (e) => {
     //     e.preventDefault();
-    //     console.log('Poll Options:', pollOptions);
     // };
 
   return (

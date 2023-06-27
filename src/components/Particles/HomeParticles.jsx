@@ -5,7 +5,7 @@ import { loadFull } from "tsparticles";
 const HomeParticles = () => {
 
   const particlesLoaded = (container) => {
-    console.log(container);
+    return
   };
   
   const particlesInit = useCallback(async (engine) => {

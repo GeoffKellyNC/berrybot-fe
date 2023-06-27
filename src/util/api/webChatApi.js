@@ -11,8 +11,6 @@ const WEB_CHAT_EP = 'https://api.berrythebot.app/ai/chat-from-web'
             message
         })
 
-        console.log('AiRes: ', aiRes.data)
-
         return aiRes.data
     } catch (error) {
         console.log(error)
