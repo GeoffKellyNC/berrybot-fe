@@ -5,7 +5,7 @@ import * as authActions from '../../store/auth/auth.actions'
 import * as userActions from '../../store/user/user.actions'
 import styled from 'styled-components'
 import { AntDesignOutlined } from '@ant-design/icons';
-import { Avatar } from 'antd';
+import { Avatar, Button } from 'antd';
 
 
 
@@ -16,7 +16,8 @@ const ControlNav = ({
     getStripeId,
     sendCusPortal,
     userLevel,
-    getStripeSession
+    getStripeSession,
+    setTourOpen
 }) => {
     const [stripeId, setStripeId] = useState(null)
 
@@ -63,6 +64,13 @@ const ControlNav = ({
                 </div>
                 <div className = 'feature-req-nav link-container'>
                     <NavLink to = '/feature-request' className = 'link feature-req-link'> Requests </NavLink>
+                </div>
+                <div className = 'tour-nav link-container'>
+                    <Button
+                        type='primary'
+                        ghost
+                        onClick = {() => setTourOpen(true)}
+                        className = 'link tour-link'> Tour </Button>
                 </div>
                 {
                     userLevel === 'admin' && (
@@ -155,5 +163,8 @@ const Cnav = styled.div`
         font-family: ${pr => pr.theme.font.family.secondary};
     }
 
+    .tour-link {
+        color: white;
+    }
 
 `

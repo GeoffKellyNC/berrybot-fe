@@ -11,7 +11,8 @@ import MusicPlayer from './MusicPlayer'
 const Music = ({
   userData,
   music,
-  setCurrentSong
+  setCurrentSong,
+  musicRef
 }) => {
   const [openMusic, setOpenMusic] = useState(false)
 
@@ -24,7 +25,7 @@ const Music = ({
   }
 
   return (
-    <MusicContainer>
+    <MusicContainer ref = {musicRef}>
       <div className='music-header'>
         <h1>Music</h1>
         <Button 

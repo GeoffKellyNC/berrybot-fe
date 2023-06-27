@@ -8,7 +8,8 @@ import { Switch, Button } from 'antd'
 
 const TwitchChatSettings = ({
     tcs,
-    updateTwitchChatSetting
+    updateTwitchChatSetting,
+    chatSettingsRef
 }) => {
     const [disabled, setDisabled] = useState(true)
     const dispatch = useDispatch()
@@ -45,10 +46,10 @@ const handleSwitch = async (e, modifier) => {
     }
 
   return (
-    <TwitchChatSettingsWrapper>
+    <TwitchChatSettingsWrapper ref = {chatSettingsRef}>
        { !tcs ? <p>Loading...</p> : 
         <>
-            <div className='tcs-title'>
+            <div  className='tcs-title'>
                 <h3>Twitch Chat Settings</h3>
                 <Button
                     type='primary'

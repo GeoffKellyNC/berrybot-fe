@@ -6,7 +6,7 @@ import Ai2Anime from '../animations/Ai2Anime';
 
 import { Input, Button, message } from 'antd';
 
-const GPTChat = ({ userData }) => {
+const GPTChat = ({ userData, gptChatRef }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isThinking, setIsThinking] = useState(false);
@@ -43,7 +43,7 @@ const GPTChat = ({ userData }) => {
   };
 
   return (
-    <ChatBox>
+    <ChatBox ref = {gptChatRef}>
         {
           messages.length === 0 && (
             <Ai2Anime />

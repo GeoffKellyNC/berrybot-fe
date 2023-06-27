@@ -11,7 +11,8 @@ import { Modal } from 'antd'
 
 const AiSettings = ({
     userData,
-    updateUserAiConfig
+    updateUserAiConfig,
+    aiSettingsRef
 }) => {
     const [config, setConfig] = useState(userData.aiConfig)
     const [changes, setChanges] = useState(false);
@@ -105,7 +106,7 @@ const AiSettings = ({
       };
 
   return (
-    <AiSettingWrapper>
+    <AiSettingWrapper ref = {aiSettingsRef}>
     <div className="ai-settings-title">
         <span> 
           AI Moderation Settings

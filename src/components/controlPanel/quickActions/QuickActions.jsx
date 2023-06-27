@@ -13,7 +13,7 @@ import { TbHelpTriangleFilled } from 'react-icons/tb'
 
 
 
-const QuickActions = () => {
+const QuickActions = ({quickActionRef}) => {
     const [openHelp, setOpenHelp] = useState(false)
 
 
@@ -21,10 +21,10 @@ const QuickActions = () => {
     const handleHelp = () => {
         setOpenHelp(!openHelp)
     }
-    
+
     return (
-        <Qa>
-            <div className="quick-actions-title">
+        <Qa ref = {quickActionRef}>
+            <div  className="quick-actions-title">
                 <h3>Quick Actions</h3>
                 <TbHelpTriangleFilled 
                     size={20}
