@@ -99,8 +99,35 @@ export const runTwitchPoll = (title, duration, pollOptions) => async dispatch =>
     try {
         const pollRes = await axiosWithAuth().post(`${BASE_URL}/twitch/start-twitch-poll`, { title, duration, pollOptions })
 
+        console.log(pollRes)
+        console.log(pollRes.data.message)
+
+        if(pollRes.data.error){
+            console.log("OK ERROR")
+            dispatch({
+                type: notifyTypes.CLEAR_APP_NOTIFICATION
+            })
+            
+            dispatch({
+                type: notifyTypes.SET_ERROR_NOTIFICATION,
+                paylaod: pollRes.data.message
+            })
+
+            setTimeout(() => {
+                dispatch({
+                    type: notifyTypes.CLEAR_APP_NOTIFICATION
+                })
+            }, 5000)
+
+            return
+        }
+
+        return
+
         
     } catch (error) {
+
+        console.log(error)
         dispatch({
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: error.response.data.message ? error.response.data.message : error.response.data.error
@@ -112,6 +139,7 @@ export const runTwitchPoll = (title, duration, pollOptions) => async dispatch =>
             })
         }
             , 5000)
+        return
     }
 }
 
@@ -302,5 +330,36 @@ export const getTwitchMods = () => async dispatch => {
             type: notifyTypes.SET_ERROR_NOTIFICATION,
             payload: error.response.data.message ? error.response.data.message : 'Error getting Twitch Mods'
         })
+    }
+}
+
+
+export const getTwitchChatters = () => async dispatch => {
+    try {
+        console.log('GETTING TWITCH CHATTERS')
+        const res = await axiosWithAuth().get(`${BASE_URL}/twitch/twitch-chatters`)
+
+        console.log('TWITCH CHATTERS', res.data)
+
+        dispatch({
+            type: twitchTypes.SET_TWITCH_CHATTERS,
+            payload: res.data.data
+        })
+
+        dispatch({
+            type: twitchTypes.SET_TWITCH_CHATTER_COUNT,
+            payload: res.data.total
+        })
+
+
+        return
+        
+    } catch (error) {
+        dispatch({
+            type: notifyTypes.SET_ERROR_NOTIFICATION,
+            payload: error.response.data.message ? error.response.data.message : 'Error getting Twitch Chatters'
+        })
+
+        console.log('ERROR GETTING TWITCH CHATTERS', error)
     }
 }

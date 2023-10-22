@@ -18,10 +18,10 @@ const RedicrectYT = ({
     const handleRedirect = useCallback(async () => {
         const code = searchParams.get('code');
 
+        sessionStorage.setItem('ytCode', code);
+        await sendYTAuthCode(code);
 
-        // await sendYTAuthCode(code);
-
-        // navigate('/control-panel');
+        navigate('/control-panel-yt');
 
     });
 

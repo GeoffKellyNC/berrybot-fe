@@ -37,7 +37,8 @@ const ControlPanel = ({
     getScheduledMessages,
     getCustomCommands,
     getTwitchChatLogs,
-    getTwitchMods
+    getTwitchMods,
+    getTwitchChatters
   }) => {
     const [tourOpen, setTourOpen] = useState(false)
 
@@ -70,6 +71,7 @@ const ControlPanel = ({
       })
   
       await verifyUserTwitchAccessToken()
+      await getTwitchChatters()
       await getCurrentStreamData()
       await getTwitchChatSettings()
       await getMusicData()
@@ -202,6 +204,7 @@ export default connect(
     getCustomCommands: userActions.getCustomCommands,
     getTwitchChatLogs: twitchActions.getTwitchChatLogs,
     getTwitchMods: twitchActions.getTwitchMods,
+    getTwitchChatters: twitchActions.getTwitchChatters,
   }
 )(ControlPanel)
 

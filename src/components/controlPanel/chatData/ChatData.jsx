@@ -2,23 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
+import ViewChatters  from '../../controlPanel/chatData/ViewChatters'
 
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTION
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTION
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
-//! USE ANTD DRAWER COMPONENT FOR THIS SECTIO
 
 const ChatData = ({
-    userData,
-    chatMods,
-    chatDataRef
+    chatDataRef,
+    twitchMods,
+    chatCount
+
 }) => {
   return (
     <ChatDataSection ref = {chatDataRef}>
@@ -26,7 +17,18 @@ const ChatData = ({
             <h1>Chat Data</h1>
         </div>
         <div className='chat-data-body'>
-            <span> COMING SOON! </span>
+            <div className = 'chat-count chat-data-section'>
+                <span className = 'chat-title'> People in chat: </span>
+                <span className = 'data-value'>{ chatCount }</span>
+            </div>
+            <div className = 'chat-data-section mod-count'>
+                <span className = 'chat-title'>Moderator Count: </span>
+                <span className = 'data-value'>{ twitchMods ? twitchMods.length : 'No mods' }</span>
+            </div>
+        </div>
+        <div className = 'chat-action-body'>
+            <ViewChatters />
+
         </div>
     </ChatDataSection>
   )
@@ -35,6 +37,9 @@ const ChatData = ({
 export default connect(st => ({
     userData: st.userData,
     chatMods: st.chatMods,
+    twitchMods: st.twitchMods,
+    twitchChatters: st.twitchChatters,
+    chatCount: st.twitchChatterCount
 }),{
 
 }) (ChatData)
@@ -61,12 +66,7 @@ const ChatDataSection = styled.div`
 
     .chat-data-body {
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: ${pr => pr.theme.font.family.primary};
-        font-size: ${pr => pr.theme.font.size.xxl};
-        color: ${pr => pr.theme.colors.berry};
+      
     }
 
 

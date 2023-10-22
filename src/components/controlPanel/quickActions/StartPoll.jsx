@@ -156,6 +156,7 @@ const StartPoll = ({
                 <Space.Compact style={{ width: '100%' }}>
                     <Input  placeholder='Enter Poll Option'
                             onChange={handleOptionChange}
+                            value = {newOption}
                             style={{ width: '80%' }}/>
                     <Button type="primary" onClick={handleAddOption}>Add</Button>
                 </Space.Compact>

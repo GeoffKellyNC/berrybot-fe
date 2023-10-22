@@ -59,7 +59,6 @@ const ScheduledActions = ({
         active: true
     }
     await setScheduledMessage(commandObj)
-    console.log('formValues', formValues)
     setFormValues(iFormValues)
     setLoading(false)
     setVisible(false)

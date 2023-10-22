@@ -48,3 +48,21 @@ export function twitchMods (state = null, action){
             return state
     }
 }
+
+export function twitchChatters(state = null, action){
+    switch(action.type){
+        case twitchTypes.SET_TWITCH_CHATTERS:
+            return action.payload
+        default:
+            return state
+    }
+}
+
+export function twitchChatterCount(state = 0, action){
+    switch(action.type){
+        case twitchTypes.SET_TWITCH_CHATTER_COUNT:
+            return action.payload
+        default:
+            return state
+    }
+}

@@ -11,6 +11,10 @@ import RedicrectYT from './views/RedirectYT';
 import Success from './views/pricing/Success';
 import ChatLogs from './views/ChatLogs'
 
+// Youtube Imports
+import ProtectedYTRoute from './util/ProtectedYTRoute';
+import ControlPanelYT from './views/youtube/ControlPanelYT';
+
 import AdminRoute from './util/AdminRoute';
 import ProtectedRoutes from './util/ProtectedRoutes';
 
@@ -42,6 +46,11 @@ function App() {
           <AdminRoute>
             <Admin />
           </AdminRoute>
+        } />
+        <Route path = '/control-panel-yt' element = {
+          <ProtectedYTRoute>
+            <ControlPanelYT />
+          </ProtectedYTRoute>
         } />
       </Routes>
     </div>

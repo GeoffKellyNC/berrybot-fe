@@ -93,7 +93,6 @@ const AiSettings = ({
       }
 
       const onSave = async (e) => {
-        console.log('saving...')
         e.preventDefault();
         setChanges(false);
         await updateUserAiConfig(config);

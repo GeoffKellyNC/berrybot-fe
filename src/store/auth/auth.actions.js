@@ -165,12 +165,50 @@ export const loginUserYouTube = () => async dispatch => {
     }
 }
 
+export const logoutUserYT = () => dispatch => {
+    sessionStorage.clear()
+
+    window.location.href = '/'
+
+    return true
+}
+
 export const sendYTAuthCode = (code) => async dispatch => {
     try {
         const loginYTRes = await axios.post(`${BASE_URL}/youtube/auth/login-youtube`, 
         { code })
 
+        console.log(loginYTRes.data)
 
+        const userPayload = {
+            unx_id: loginYTRes.data.unx_id ? loginYTRes.data.unx_id : null,
+            email: loginYTRes.data.userData.emailAddresses[0].value,
+            google_account_id: loginYTRes.data.userData.emailAddresses[0].metadata.source.id,
+            real_name_first: loginYTRes.data.userData.names[0].givenName,
+            real_name_last: loginYTRes.data.userData.names[0].familyName,
+            youtube_name: loginYTRes.data.youtubeData.data.items[0].snippet.title,
+            youtube_desc: loginYTRes.data.youtubeData.data.items[0].snippet.description,
+            youtube_image: loginYTRes.data.youtubeData.data.items[0].snippet.thumbnails.default.url,
+            youtube_custom_url: loginYTRes.data.youtubeData.data.items[0].snippet.customUrl,
+            youtube_sub_count: loginYTRes.data.youtubeData.data.items[0].statistics.subscripberCount,
+            youtube_video_count: loginYTRes.data.youtubeData.data.items[0].statistics.videoCount,
+            youtube_view_count: loginYTRes.data.youtubeData.data.items[0].statistics.viewCount
+
+
+        }
+
+        dispatch({
+            type: authTypes.SET_AUTH_STATE,
+            payload: true
+        })
+
+        dispatch({
+            type: userTypes.SET_USER_DATA,
+            payload: userPayload
+        })
+
+        sessionStorage.setItem('userData', JSON.stringify(userPayload))
+        sessionStorage.setItem('isAuth', true)
 
         return
 

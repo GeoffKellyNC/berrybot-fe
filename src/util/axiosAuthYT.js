@@ -4,6 +4,7 @@ import axios from 'axios';
 export const axiosWithAuthYT = () => {
     const unx_id = JSON.parse(sessionStorage.getItem('userData')).userData.unx_id;
     const { jwtToken, accessToken } = JSON.parse(sessionStorage.getItem('authData'));
+    const ytCode = JSON.parse(sessionStorage.getItem('ytCode'))
 
     
     return axios.create({

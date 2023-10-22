@@ -28,7 +28,6 @@ const ControlNav = ({
 
     const setUp = useCallback(async () => {
         const id = await getStripeSession()
-        console.log('STRIP ID', id) //!DEBUG
         setStripeId(id)
         return
     }, [getStripeSession])
