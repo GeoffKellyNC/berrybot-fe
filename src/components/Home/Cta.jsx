@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import twitchLoginLink from '../../util/twitchLoginLink';
+// import twitchLoginLink from '../../util/twitchLoginLink';
+import { useDispatch } from 'react-redux';
+import * as notifyTypes from '../../store/notify/notify.types';
+import AppNotifications from '../notifications/AppNotifications'
 
 import SpaceshipAnimation from './Spaceship';
 import TwitchAnimation from './TwitchAnime';
@@ -10,18 +13,27 @@ import { Button } from 'antd';
 
 const CTA = ({ loginUserYouTube} ) => {
 
+  const dispatch = useDispatch();
+
   const handleLoginClick = (e) => {
     e.preventDefault();
-    window.location.href = twitchLoginLink;
-  };
+    dispatch({
+      type: notifyTypes.SET_APP_NOTIFICATION,
+      payload: 'This app is offline. If you came from my profile. Please see the source code on my github. www.github.com/GeoffKellyNC'
+    })
 
-//   const handleLoginYouTubeClick = (e) => {
-//     e.preventDefault();
-//     loginUserYouTube();
-// };
+    setTimeout(() => {
+      dispatch({
+        type: notifyTypes.CLEAR_APP_NOTIFICATION
+      })
+    }, 10000)
+    
+    // window.location.href = twitchLoginLink; 
+  };
 
   return (
     <CallToAction>
+      <AppNotifications />
         <div className='particles-bg'>
             <ParticlesBG />
         </div>
@@ -44,15 +56,7 @@ const CTA = ({ loginUserYouTube} ) => {
                 >
                 Login
             </Button>
-            {/* <Button 
-                className="login-btn" 
-                type="primary" 
-                ghost
-                onClick={handleLoginYouTubeClick}
-                style={{"width": "200px", "height": "50px", "fontSize": "1.5rem"}}
-                >
-                Login YouTube
-            </Button> */}
+
             <TwitchAnimation />
           </div>
         </div>

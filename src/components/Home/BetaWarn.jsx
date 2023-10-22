@@ -31,7 +31,7 @@ const DiscordLink = styled.a`
 const BetaWarningPopUp = () => {
   return (
     <PopUpContainer>
-      <span>Attention: This app is currently in beta. If you have any questions, please visit our </span>
+      <span>Attention: This app is offline. If you came from my profile. Please see the source code on my github. www.github.com/GeoffKellyNC If you have any questions, please visit our </span>
       <DiscordLink  onClick={() => window.open('https://discord.com/channels/851247292009938944/1084633989156966450')}>Discord server</DiscordLink>
     </PopUpContainer>
   );
